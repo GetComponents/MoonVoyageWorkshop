@@ -11,7 +11,6 @@ public class GrappleShot : MonoBehaviour
 
     private void Start()
     {
-        //WwisePlay PlShotFlyingLoop
         Lr.SetPosition(0, player.transform.position);
         Lr.SetPosition(1, transform.position);
         Lr.enabled = true;
@@ -52,8 +51,7 @@ public class GrappleShot : MonoBehaviour
 
     public void AttachToObject(TonguePoint point)
     {
-        //WwisePlay PlShotHitGround
-        //WwisePlay PlReelInSoundLoop
+        SoundManager.Instance.PlaySFX(eSFX.EPlShotHitGround);
         player.AttachPoint(point);
         player.EnableTongue();
         Destroy(gameObject);

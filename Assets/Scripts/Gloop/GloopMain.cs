@@ -81,22 +81,18 @@ public class GloopMain : MonoBehaviour
                     MyMovement = gloopDefault;
                     break;
                 case EMode.GLIDE:
-                    //WwisePlay MuGlideOST
                     glideMode.enabled = true;
                     MyMovement = glideMode;
                     break;
                 case EMode.DASH:
-                    //WwisePlay MuDashOST
                     dashMode.enabled = true;
                     MyMovement = dashMode;
                     break;
                 case EMode.GRAPPLE:
-                    //WwisePlay MuGrappleOST
                     grappleMode.enabled = true;
                     MyMovement = grappleMode;
                     break;
                 case EMode.GRAVITY:
-                    //WwisePlay MuGravityOST
                     gravityMode.enabled = true;
                     MyMovement = gravityMode;
                     break;
@@ -150,7 +146,7 @@ public class GloopMain : MonoBehaviour
         grappleMode.enabled = false;
         gravityMode.enabled = false;
         gloopDefault.enabled = false;
-        //WwisePlay PlAmCursorAmbiance
+        SoundManager.Instance.PlaySFX(eSFX.EPlAmCursorAmbiance);
         //StartCoroutine(SpawnPlayer());
     }
 
@@ -232,7 +228,7 @@ public class GloopMain : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        //WwisePlay PlDeath
+        SoundManager.Instance.PlaySFX(eSFX.EPlRespawn);
         Respawn?.Invoke();
         Backpack.Instance.RespawnPlayer();
         /////////////CheckpointEvent/////////////////////////////////////////////////////////
@@ -254,7 +250,7 @@ public class GloopMain : MonoBehaviour
         //    }
         //}
         anim.SetBool("Respawn", true);
-        SoundManager.Instance.PlayEffect(respawnSound);
+        //SoundManager.Instance.PlayEffect(respawnSound);
         //LosableObjects = new List<GameObject>();
         //LastCheckpoint.RespawnPlayer();
         MyMovement.MyBase.Unstick();
@@ -271,12 +267,13 @@ public class GloopMain : MonoBehaviour
             currentHealth--;
             if (currentHealth > 0)
             {
-                //WwisePlay PlTakeDmg
+                SoundManager.Instance.PlaySFX(eSFX.EPlTakeDmg);
                 StartCoroutine(IFrames());
                 return;
             }
             currentHealth = scenicHealth;
         }
+        SoundManager.Instance.PlaySFX(eSFX.EPlDeath);
         RespawnPlayer();
     }
 
@@ -286,7 +283,6 @@ public class GloopMain : MonoBehaviour
         Color tmp = sr.color;
         sr.color = Color.gray;
         yield return new WaitForSeconds(iFrameTimer);
-        //WwisePlay PlLostIFrames
         sr.color = tmp;
         hasIFrames = false;
     }

@@ -68,8 +68,8 @@ public class GoopGrapple : GloopMove
 
     private void RaycastToMousePos()
     {
-        //WwisePlay PlShootGrappleShot
-        SoundManager.Instance.PlayEffect(shotSound);
+        //SoundManager.Instance.PlayEffect(shotSound);
+        SoundManager.Instance.PlaySFX(eSFX.EPlShootGrappleShot);
         //AudioSource.PlayClipAtPoint(shotSound, transform.position);
         currentShot = Instantiate(gloopShot, firePoint.position, Quaternion.identity);
         currentShot.GetComponent<Rigidbody2D>().AddForce(Vector3.Normalize(firePoint.localPosition) * shotSpeed);
@@ -123,7 +123,6 @@ public class GoopGrapple : GloopMove
 
     public void DisableTongue()
     {
-        //WwiseStopPlay PlReelInLoop
         MyBase.GloopAnim.SetBool("Grappling", false);
         tongueAnchorPos = null;
         tongueRender.enabled = false;

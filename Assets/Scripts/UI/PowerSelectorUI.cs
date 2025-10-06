@@ -114,21 +114,17 @@ public class PowerSelectorUI : MonoBehaviour
         if (dir.x > 0.5f)
         {
             Highlight(rightImage, rightColor);
-            //WwisePlay UISelectFloat
         }
         else if (dir.x < -0.5f)
         {
-            //WwisePlay UISelectGrapple
             Highlight(leftImage, leftColor);
         }
         else if (dir.y > 0.5f)
-        {
-            //WwisePlay UISelectDash
+        { 
             Highlight(topImage, topColor);
         }
         else if (dir.y < -0.5f)
         {
-            //WwisePlay UISelectGravity
             Highlight(bottomImage, bottomColor);
         }
     }

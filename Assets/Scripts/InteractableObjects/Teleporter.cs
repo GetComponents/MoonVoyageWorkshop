@@ -13,10 +13,6 @@ public class Teleporter : MonoBehaviour
 
     public bool DisableTeleporter;
 
-    private void Start()
-    {
-        //WwisePlay ObAmTeleporter
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player" && !DisableTeleporter)
@@ -35,8 +31,7 @@ public class Teleporter : MonoBehaviour
 
     private void TeleportPlayer()
     {
-
-        //WwisePlay ObTeleportPlayer
+        SoundManager.Instance.PlaySFX(eSFX.EObTeleportPlayer);
         var player = GloopMain.Instance.MyMovement.MyBase;
         player.transform.position = destination.TeleportPos.position;
         destination.DisableTeleporter = true;

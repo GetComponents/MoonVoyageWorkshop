@@ -65,10 +65,10 @@ public class ObjectProperty : MonoBehaviour
             case ObjectType.HURT:
                 break;
             case ObjectType.COLLECTABLE:
-                //WwisePlay ObAmStardust
+                SoundManager.Instance.PlaySFX(eSFX.EObAmStardust);
                 break;
             case ObjectType.KEY:
-                //WwisePlay ObAmKey
+                SoundManager.Instance.PlaySFX(eSFX.EObAmKey);
                 break;
             case ObjectType.CATAPULT:
                 break;
@@ -96,7 +96,7 @@ public class ObjectProperty : MonoBehaviour
                 {
                     bounceAnim.SetBool("Bounce", true);
                 }
-                //WwisePlay ObMushroomBounce
+                SoundManager.Instance.PlaySFX(eSFX.EObMushroomBounce);
                 break;
             case ObjectType.STICKY:
                 var player = GloopMain.Instance.MyMovement.MyBase;
@@ -114,13 +114,13 @@ public class ObjectProperty : MonoBehaviour
                 GloopMain.Instance.DamagePlayer();
                 break;
             case ObjectType.COLLECTABLE:
-                //WwisePlay ObCollectStardust
+                SoundManager.Instance.PlaySFX(eSFX.EObCollectStardust);
                 Backpack.Instance.AddStar(gameObject);
                 gameObject.SetActive(false);
                 //TODO: Collect object
                 break;
             case ObjectType.KEY:
-                //WwisePlay ObCollectKey
+                SoundManager.Instance.PlaySFX(eSFX.EObCollectKey);
                 Backpack.Instance.AddKey(gameObject);
                 gameObject.SetActive(false);
                 break;
@@ -135,7 +135,7 @@ public class ObjectProperty : MonoBehaviour
                 }
                 break;
             case ObjectType.BOUNCEPLANT:
-                //WwisePlay ObBouncePlantBounce
+                SoundManager.Instance.PlaySFX(eSFX.EObBouncePlantBounce);
                 obj.velocity *= 0;
                 Vector2 launchDir = (obj.transform.position - transform.position).normalized;
                 obj.AddForce(launchStrength * launchDir);
@@ -146,7 +146,7 @@ public class ObjectProperty : MonoBehaviour
                 break;
             case ObjectType.GRAVITYSWITCH:
                 GameManager.Instance.GravitySwitch?.Invoke();
-                //WwisePlay ObGravitySwitch
+                SoundManager.Instance.PlaySFX(eSFX.EObGravitySwitch);
                 break;
             case ObjectType.BUBBLE:
                 if (GloopMain.Instance.CurrentMode != EMode.DASH)
@@ -208,7 +208,8 @@ public class ObjectProperty : MonoBehaviour
         if (interactionSXF != null)
         {
             //SoundManager.Instance.PlayEffect(interactionSXF, soundVolume);
-            SoundManager.Instance.PlayEffect(interactionSXF);
+            //SoundManager.Instance.PlaySFX()
+            //SoundManager.Instance.PlayEffect(interactionSXF);
             //AudioSource.PlayClipAtPoint(interactionSXF, transform.position);
         }
         if (destroyOnInteract)
@@ -264,7 +265,7 @@ public class ObjectProperty : MonoBehaviour
             GloopMain.Instance.MyMovement.MyBase.rb.AddForce(launchAngle * launchStrength);
             GloopMain.Instance.Rotation.UnrotateCursor = false;
         }
-        //WwisePlay PlDetachFromStickyJump?
+        SoundManager.Instance.PlaySFX(eSFX.EPlUnstickFromStickySurface);
         GloopMain.Instance.Rotation.disableOtherRotations = false;
         GloopMain.Instance.Rotation.RotateToGravity();
         GloopMain.Instance.MyMovement.MyBase.UnstickToSurfaceEvent.RemoveListener(MomentumLaunchPlayer);
@@ -272,7 +273,7 @@ public class ObjectProperty : MonoBehaviour
 
     private void CatapultPlayer()
     {
-        //WwisePlay ObCatapultPlayerStart
+        SoundManager.Instance.PlaySFX(eSFX.EObCatapultPlayerStart);
         GloopMain.Instance.MyMovement.MyBase.VelocityToHold = transform.up.normalized * launchStrength;
         GloopMain.Instance.MyMovement.MyBase.HoldingVelocity = true;
         GloopMain.Instance.MyMovement.MyBase.InputLocked++;
@@ -287,7 +288,7 @@ public class ObjectProperty : MonoBehaviour
 
     private void PopBubble()
     {
-        //nWwisePlay ObPopBubble
+        SoundManager.Instance.PlaySFX(eSFX.EObPopBubble);
         Debug.Log("POP");
         GloopMain.Instance.MyMovement.MyBase.UnparentFromPlatform();
         //GloopMain.Instance.MyMovement.MyBase.UnstickToSurfaceEvent?.Invoke();

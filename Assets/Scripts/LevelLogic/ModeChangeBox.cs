@@ -21,7 +21,7 @@ public class ModeChangeBox : MonoBehaviour
                 gameObject.SetActive(false);
             }
             TransformPlayer();
-            SoundManager.Instance.PlayEffect(interactionSound);
+            //SoundManager.Instance.PlayEffect(interactionSound);
         }
     }
 

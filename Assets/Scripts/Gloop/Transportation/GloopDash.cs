@@ -121,7 +121,7 @@ public class GloopDash : GloopMove
             MyBase.rb.velocity = Vector3.zero;
             DashDir = GloopMain.Instance.firePoint.localPosition;
             MyBase.rb.AddForce(Vector3.Normalize(DashDir) * DashStrength);
-            //WwisePlay PlDash
+            SoundManager.Instance.PlaySFX(eSFX.EPlDash);
             DashEvent?.Invoke();
             DashEndCor = StartCoroutine(DashEnd());
         }
@@ -129,29 +129,7 @@ public class GloopDash : GloopMove
 
     private void PlayRandomDashSound()
     {
-        int tmp = Random.Range(0, 3);
-        while (lastDashSound == tmp)
-        {
-            tmp = Random.Range(0, 3);
-        }
-        switch (tmp)
-        {
-            case 0:
-                SoundManager.Instance.PlayEffect(DashSound1);
-                //AudioSource.PlayClipAtPoint(DashSound1, transform.position);
-                break;
-            case 1:
-                SoundManager.Instance.PlayEffect(DashSound2);
-                //AudioSource.PlayClipAtPoint(DashSound2, transform.position);
-                break;
-            case 2:
-                SoundManager.Instance.PlayEffect(DashSound3);
-                //AudioSource.PlayClipAtPoint(DashSound3, transform.position);
-                break;
-            default:
-                break;
-        }
-        lastDashSound = tmp;
+        SoundManager.Instance.PlaySFX(eSFX.EPlDash, true, true);
     }
 
     private IEnumerator DashEnd()

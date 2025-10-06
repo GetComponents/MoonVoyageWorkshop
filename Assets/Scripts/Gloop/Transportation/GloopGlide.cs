@@ -81,7 +81,7 @@ public class GloopGlide : GloopMove
         }
         else
         {
-            //WwiseStopPlay PlFloatLoop
+            SoundManager.Instance.PlaySFX(eSFX.EPlFloatLoop);
             FlySound.Stop();
             MyBase.GloopAnim.SetBool("Flying", false);
         }
@@ -98,7 +98,7 @@ public class GloopGlide : GloopMove
         {
             MyBase.airborneMul = MyBase.airborneSpeed;
         }
-        //WwiseStopPlay PlFloatLoop
+        SoundManager.Instance.PlaySFX(eSFX.EPlFloatLoop);
         MySoundtrack.volume = 0;
         FlySound.Stop();
         MyBase.GloopAnim.SetBool("Flying", false);
@@ -142,11 +142,11 @@ public class GloopGlide : GloopMove
         pressingButton = context.performed;
         if (pressingButton && currentFlightTime > 0 && MyBase.GroundedAmount == 0)
         {
-            //WwisePlay PlFloatLoop
+            SoundManager.Instance.PlaySFX(eSFX.EPlFloatLoop);
         }
         else
         {
-            //WwiseStopPlay PlFloatLoop
+            SoundManager.Instance.PlaySFX(eSFX.EPlFloatLoop, false);
         }
     }
 }

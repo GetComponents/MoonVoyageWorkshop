@@ -13,7 +13,6 @@ public class MenuButtons : MonoBehaviour
     bool settingsOpen;
     private void Start()
     {
-        //WwisePlay MuMainMenuTheme
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         if (PlayerPrefs.GetInt("LevelIndex") == 0)
@@ -48,16 +47,16 @@ public class MenuButtons : MonoBehaviour
 
     public void StartGame()
     {
-        //WwisePlay UIButtonPress
-        //WwisePlay UIContinueGame
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
+        SoundManager.Instance.PlaySFX(eSFX.EUIContinueGame);
         Debug.Log("LoadingTheGame");
         SceneManager.LoadScene("LevelScene");
     }
 
     public void NewGame()
     {
-        //WwisePlay UIButtonPress
-        //WwisePlay UIStartNewGame
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
+        SoundManager.Instance.PlaySFX(eSFX.EUIContinueGame);
         Debug.Log("LoadingTheGame");
         PlayerPrefs.SetInt("LevelIndex", 0);
         PlayerPrefs.SetInt("StarCount", 0);
@@ -67,14 +66,14 @@ public class MenuButtons : MonoBehaviour
 
     public void QuitGame()
     {
-        //WwisePlay UIButtonPress
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
         Application.Quit();
     }
 
     public void OpenSettings()
     {
-        //WwisePlay UIButtonPress
-        //WwisePlay UIOpenSettingsJingle
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
+        SoundManager.Instance.PlaySFX(eSFX.EUIOpenSettingsJingle);
         settingsOpen = true;
         Settings.SetActive(true);
         if (Settings.TryGetComponent<SettingsManager>(out SettingsManager sm))
@@ -85,22 +84,22 @@ public class MenuButtons : MonoBehaviour
 
     public void CloseSettings()
     {
-        //WwisePlay UICloseSettingsJingle
-        //WwisePlay UIButtonPress
+        SoundManager.Instance.PlaySFX(eSFX.EUICloseSettingsJingle);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
         settingsOpen = false;
         Settings.SetActive(false);
     }
 
     public void OpenCredits()
     {
-        //WwisePlay UIOpenCreditsJingle
-        //WwisePlay UIButtonPress
+        SoundManager.Instance.PlaySFX(eSFX.EUIOpenSettingsJingle);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
         SceneManager.LoadScene("Credits");
     }
 
     public void GoToMainMenu()
     {
-        //WwisePlay UIButtonPress
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -33,7 +33,7 @@ public class Spawnpoint : MonoBehaviour
 
     private void TriggerCheckpoint()
     {
-        SoundManager.Instance.PlayEffect(interactionSFX);
+        //SoundManager.Instance.PlayEffect(interactionSFX);
         gameObject.SetActive(false);
         Instantiate(particles, transform.position, Quaternion.identity);
         Backpack.Instance.Respawn.RemoveAllListeners();

@@ -17,7 +17,7 @@ public class Lock : MonoBehaviour
             {
                 Backpack.Instance.RemoveKey();
             }
-            //WwisePlay ObKeyUse
+            SoundManager.Instance.PlaySFX(eSFX.EObKeyUse);
             Destroy(parent);
         }
     }

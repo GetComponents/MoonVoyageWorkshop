@@ -97,32 +97,34 @@ public class EndScreenLogic : MonoBehaviour
 
     private void PlayRandomSound()
     {
-        int tmp = Random.Range(0, 5);
-        while (lastStarSound == tmp)
-        {
-            tmp = Random.Range(0, 5);
-        }
-        switch (tmp)
-        {
-            case 0:
-                SoundManager.Instance.PlayEffect(star1);
-                break;
-            case 1:
-                SoundManager.Instance.PlayEffect(star2);
-                break;
-            case 2:
-                SoundManager.Instance.PlayEffect(star3);
-                break;
-            case 3:
-                SoundManager.Instance.PlayEffect(star4);
-                break;
-            case 4:
-                SoundManager.Instance.PlayEffect(star5);
-                break;
-            default:
-                break;
-        }
-        lastStarSound = tmp;
+
+        SoundManager.Instance.PlaySFX(eSFX.EObCollectStardust, true, true);
+        //int tmp = Random.Range(0, 5);
+        //while (lastStarSound == tmp)
+        //{
+        //    tmp = Random.Range(0, 5);
+        //}
+        //switch (tmp)
+        //{
+        //    case 0:
+        //        SoundManager.Instance.PlayEffect(star1);
+        //        break;
+        //    case 1:
+        //        SoundManager.Instance.PlayEffect(star2);
+        //        break;
+        //    case 2:
+        //        SoundManager.Instance.PlayEffect(star3);
+        //        break;
+        //    case 3:
+        //        SoundManager.Instance.PlayEffect(star4);
+        //        break;
+        //    case 4:
+        //        SoundManager.Instance.PlayEffect(star5);
+        //        break;
+        //    default:
+        //        break;
+        //}
+        //lastStarSound = tmp;
     }
 
     private IEnumerator SpawnStars()

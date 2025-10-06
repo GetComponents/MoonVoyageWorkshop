@@ -36,11 +36,11 @@ public class GloopMoveBase : MonoBehaviour
             {
                 if (value)
                 {
-                    //WwisePlay PlFlyingAroundLoop
+                    SoundManager.Instance.PlaySFX(eSFX.EPlFlyingAroundLoop);
                 }
                 else
                 {
-                    //WwiseStopPlay PlFlyingAroundLoop
+                    SoundManager.Instance.PlaySFX(eSFX.EPlFlyingAroundLoop, false);
                 }
             }
             m_holdingVelocity = value;
@@ -63,7 +63,7 @@ public class GloopMoveBase : MonoBehaviour
         {
             if (value < 0)
             {
-                //WwiseStopPlay PlFootstepLoop
+                SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, false);
                 m_groundedAmount = 0;
             }
             else
@@ -82,12 +82,12 @@ public class GloopMoveBase : MonoBehaviour
         {
             if (GroundedAmount > 0)
             {
-                //WwisePlay PlFootstepLoop (extra logic for different kinds of footstep missing)
+                SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop);
             }
         }
         if (Mathf.Approximately(context.ReadValue<Vector2>().x, 0))
         {
-            //WwiseStopPlay PlFootstepLoop
+            SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, false);
         }
         CurrentMovement = context.ReadValue<Vector2>();
         MovementDir.y = CurrentMovement.y;
@@ -220,7 +220,7 @@ public class GloopMoveBase : MonoBehaviour
     public void Jump()
     {
         //Debug.Log(GroundedAmount + " " + GracePeriod);
-        //WwisePlay PlJump
+        SoundManager.Instance.PlaySFX(eSFX.EPlJump);
         jumped = true;
         GracePeriod = 0;
         Vector2 tmp = rb.velocity;
@@ -286,7 +286,7 @@ public class GloopMoveBase : MonoBehaviour
 
     public void StickToSurface(Transform surface)
     {
-        //WwisePlay PlStickToStickySurface
+        SoundManager.Instance.PlaySFX(eSFX.EPlStickToStickySurface);
         StickToSurfaceEvent?.Invoke();
         rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
         rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
@@ -301,7 +301,7 @@ public class GloopMoveBase : MonoBehaviour
 
     public void Unstick()
     {
-        //WwisePlay PlUnstickFromStickySurface
+        SoundManager.Instance.PlaySFX(eSFX.EPlUnstickFromStickySurface);
         stickingToSurface = false;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;

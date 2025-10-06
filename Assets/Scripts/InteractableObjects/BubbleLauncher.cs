@@ -24,7 +24,7 @@ public class BubbleLauncher : MonoBehaviour
     private void SpawnBubble()
     {
         ObjectMover tmp = Instantiate(bubblePrefab, launchPos.position, Quaternion.identity);
-        //WwisePlay ObShootBubble
+        SoundManager.Instance.PlaySFX(eSFX.EObShootBubble);
         tmp.MovementSpeed = launchSpeed;
         tmp.ProjectileDirection = transform.up.normalized;
         timer = 0;

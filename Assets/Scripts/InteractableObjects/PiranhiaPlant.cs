@@ -42,7 +42,6 @@ public class PiranhiaPlant : MonoBehaviour
             waitTimer += Time.deltaTime;
             if (waitTimer > timeToWait)
             {
-                //WwisePlay ObBouncePlantGrowLoop
                 waiting = false;
                 growing = true;
                 waitTimer = 0;
@@ -70,14 +69,12 @@ public class PiranhiaPlant : MonoBehaviour
         if (regressing)
         {
             regressMul *= regressIncrease;
-            //WwiseSpecial Increase speed of ObBouncePlantHideLoop
             return;
         }
         if (CurrentSegments.Count == 0)
         {
             return;
         }
-        //WwisePlay ObBouncePlantHideLoop
         regressing = true;
         regressTimer = (1 - (growTimer / growThreshhold)) * timeToRegress;
         Vector3 tmp = headPrevPos;

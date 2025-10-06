@@ -31,11 +31,11 @@ public class GloopGravity : GloopMove
         spriteRotator.ChangeGravity();
         if (MyBase.rb.gravityScale > 0)
         {
-            //WwisePlay PlChangeGravityDown
+            SoundManager.Instance.PlaySFX(eSFX.EPlChangeGravityDown);
         }
         else
         {
-            //WwisePlay PlChangeGravityUp
+            SoundManager.Instance.PlaySFX(eSFX.EPlChangeGravityUp);
         }
     }
 

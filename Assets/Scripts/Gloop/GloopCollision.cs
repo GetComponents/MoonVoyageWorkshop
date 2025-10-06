@@ -20,7 +20,7 @@ public class GloopCollision : MonoBehaviour
         //Debug.Log($"I, {gameObject.name} collided with {collision.gameObject.name}");
         if (collision.tag == "Floor")
         {
-            //WwisePlay ObPlayerHitsGround
+            SoundManager.Instance.PlaySFX(eSFX.EObPlayerHitsGround);
             //switch (groundType)
             //{
             //    case EGrass:
