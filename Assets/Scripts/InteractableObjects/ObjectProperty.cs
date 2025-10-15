@@ -65,10 +65,10 @@ public class ObjectProperty : MonoBehaviour
             case ObjectType.HURT:
                 break;
             case ObjectType.COLLECTABLE:
-                SoundManager.Instance.PlaySFX(eSFX.EObAmStardust);
+                SoundManager.Instance.PlaySFX(eSFX.EObAmStardust, this.gameObject);
                 break;
             case ObjectType.KEY:
-                SoundManager.Instance.PlaySFX(eSFX.EObAmKey);
+                SoundManager.Instance.PlaySFX(eSFX.EObAmKey, this.gameObject);
                 break;
             case ObjectType.CATAPULT:
                 break;
@@ -96,7 +96,7 @@ public class ObjectProperty : MonoBehaviour
                 {
                     bounceAnim.SetBool("Bounce", true);
                 }
-                SoundManager.Instance.PlaySFX(eSFX.EObMushroomBounce);
+                SoundManager.Instance.PlaySFX(eSFX.EObMushroomBounce, this.gameObject);
                 break;
             case ObjectType.STICKY:
                 var player = GloopMain.Instance.MyMovement.MyBase;
@@ -114,13 +114,13 @@ public class ObjectProperty : MonoBehaviour
                 GloopMain.Instance.DamagePlayer();
                 break;
             case ObjectType.COLLECTABLE:
-                SoundManager.Instance.PlaySFX(eSFX.EObCollectStardust);
+                SoundManager.Instance.PlaySFX(eSFX.EObCollectStardust, null);
                 Backpack.Instance.AddStar(gameObject);
                 gameObject.SetActive(false);
                 //TODO: Collect object
                 break;
             case ObjectType.KEY:
-                SoundManager.Instance.PlaySFX(eSFX.EObCollectKey);
+                SoundManager.Instance.PlaySFX(eSFX.EObCollectKey, null);
                 Backpack.Instance.AddKey(gameObject);
                 gameObject.SetActive(false);
                 break;
@@ -135,7 +135,7 @@ public class ObjectProperty : MonoBehaviour
                 }
                 break;
             case ObjectType.BOUNCEPLANT:
-                SoundManager.Instance.PlaySFX(eSFX.EObBouncePlantBounce);
+                SoundManager.Instance.PlaySFX(eSFX.EObBouncePlantBounce, this.gameObject);
                 obj.velocity *= 0;
                 Vector2 launchDir = (obj.transform.position - transform.position).normalized;
                 obj.AddForce(launchStrength * launchDir);
@@ -146,7 +146,7 @@ public class ObjectProperty : MonoBehaviour
                 break;
             case ObjectType.GRAVITYSWITCH:
                 GameManager.Instance.GravitySwitch?.Invoke();
-                SoundManager.Instance.PlaySFX(eSFX.EObGravitySwitch);
+                SoundManager.Instance.PlaySFX(eSFX.EObGravitySwitch, this.gameObject);
                 break;
             case ObjectType.BUBBLE:
                 if (GloopMain.Instance.CurrentMode != EMode.DASH)
@@ -265,7 +265,7 @@ public class ObjectProperty : MonoBehaviour
             GloopMain.Instance.MyMovement.MyBase.rb.AddForce(launchAngle * launchStrength);
             GloopMain.Instance.Rotation.UnrotateCursor = false;
         }
-        SoundManager.Instance.PlaySFX(eSFX.EPlUnstickFromStickySurface);
+        SoundManager.Instance.PlaySFX(eSFX.EPlUnstickFromStickySurface, this.gameObject);
         GloopMain.Instance.Rotation.disableOtherRotations = false;
         GloopMain.Instance.Rotation.RotateToGravity();
         GloopMain.Instance.MyMovement.MyBase.UnstickToSurfaceEvent.RemoveListener(MomentumLaunchPlayer);
@@ -273,7 +273,7 @@ public class ObjectProperty : MonoBehaviour
 
     private void CatapultPlayer()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EObCatapultPlayerStart);
+        SoundManager.Instance.PlaySFX(eSFX.EObCatapultPlayerStart, this.gameObject);
         GloopMain.Instance.MyMovement.MyBase.VelocityToHold = transform.up.normalized * launchStrength;
         GloopMain.Instance.MyMovement.MyBase.HoldingVelocity = true;
         GloopMain.Instance.MyMovement.MyBase.InputLocked++;
@@ -288,7 +288,7 @@ public class ObjectProperty : MonoBehaviour
 
     private void PopBubble()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EObPopBubble);
+        SoundManager.Instance.PlaySFX(eSFX.EObPopBubble, null);
         Debug.Log("POP");
         GloopMain.Instance.MyMovement.MyBase.UnparentFromPlatform();
         //GloopMain.Instance.MyMovement.MyBase.UnstickToSurfaceEvent?.Invoke();

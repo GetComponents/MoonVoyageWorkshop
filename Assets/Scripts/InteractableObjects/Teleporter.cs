@@ -31,7 +31,7 @@ public class Teleporter : MonoBehaviour
 
     private void TeleportPlayer()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EObTeleportPlayer);
+        SoundManager.Instance.PlaySFX(eSFX.EObTeleportPlayer, this.gameObject);
         var player = GloopMain.Instance.MyMovement.MyBase;
         player.transform.position = destination.TeleportPos.position;
         destination.DisableTeleporter = true;
