@@ -47,16 +47,16 @@ public class MenuButtons : MonoBehaviour
 
     public void StartGame()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
-        SoundManager.Instance.PlaySFX(eSFX.EUIContinueGame);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress, this.gameObject);
+        SoundManager.Instance.PlaySFX(eSFX.EUIContinueGame, this.gameObject);
         Debug.Log("LoadingTheGame");
         SceneManager.LoadScene("LevelScene");
     }
 
     public void NewGame()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
-        SoundManager.Instance.PlaySFX(eSFX.EUIContinueGame);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress, this.gameObject);
+        SoundManager.Instance.PlaySFX(eSFX.EUIContinueGame, this.gameObject);
         Debug.Log("LoadingTheGame");
         PlayerPrefs.SetInt("LevelIndex", 0);
         PlayerPrefs.SetInt("StarCount", 0);
@@ -66,14 +66,14 @@ public class MenuButtons : MonoBehaviour
 
     public void QuitGame()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress, this.gameObject);
         Application.Quit();
     }
 
     public void OpenSettings()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
-        SoundManager.Instance.PlaySFX(eSFX.EUIOpenSettingsJingle);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress, this.gameObject);
+        SoundManager.Instance.PlaySFX(eSFX.EUIOpenSettingsJingle, this.gameObject);
         settingsOpen = true;
         Settings.SetActive(true);
         if (Settings.TryGetComponent<SettingsManager>(out SettingsManager sm))
@@ -84,22 +84,22 @@ public class MenuButtons : MonoBehaviour
 
     public void CloseSettings()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUICloseSettingsJingle);
-        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
+        SoundManager.Instance.PlaySFX(eSFX.EUICloseSettingsJingle, this.gameObject);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress, this.gameObject);
         settingsOpen = false;
         Settings.SetActive(false);
     }
 
     public void OpenCredits()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUIOpenSettingsJingle);
-        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
+        SoundManager.Instance.PlaySFX(eSFX.EUIOpenSettingsJingle, this.gameObject);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress, this.gameObject);
         SceneManager.LoadScene("Credits");
     }
 
     public void GoToMainMenu()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress);
+        SoundManager.Instance.PlaySFX(eSFX.EUIButtonPress, this.gameObject);
         SceneManager.LoadScene("MainMenu");
     }
 }

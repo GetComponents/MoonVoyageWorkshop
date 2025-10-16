@@ -36,11 +36,11 @@ public class GloopMoveBase : MonoBehaviour
             {
                 if (value)
                 {
-                    SoundManager.Instance.PlaySFX(eSFX.EPlFlyingAroundLoop);
+                    SoundManager.Instance.PlaySFX(eSFX.EPlFlyingAroundLoop, this.gameObject);
                 }
                 else
                 {
-                    SoundManager.Instance.PlaySFX(eSFX.EPlFlyingAroundLoop, false);
+                    SoundManager.Instance.PlaySFX(eSFX.EPlFlyingAroundLoop, this.gameObject, false);
                 }
             }
             m_holdingVelocity = value;
@@ -63,7 +63,7 @@ public class GloopMoveBase : MonoBehaviour
         {
             if (value < 0)
             {
-                SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, false);
+                SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, this.gameObject, false);
                 m_groundedAmount = 0;
             }
             else
@@ -82,12 +82,12 @@ public class GloopMoveBase : MonoBehaviour
         {
             if (GroundedAmount > 0)
             {
-                SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop);
+                SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, this.gameObject);
             }
         }
         if (Mathf.Approximately(context.ReadValue<Vector2>().x, 0))
         {
-            SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, false);
+            SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, this.gameObject, false);
         }
         CurrentMovement = context.ReadValue<Vector2>();
         MovementDir.y = CurrentMovement.y;
@@ -220,7 +220,7 @@ public class GloopMoveBase : MonoBehaviour
     public void Jump()
     {
         //Debug.Log(GroundedAmount + " " + GracePeriod);
-        SoundManager.Instance.PlaySFX(eSFX.EPlJump);
+        SoundManager.Instance.PlaySFX(eSFX.EPlJump, this.gameObject);
         jumped = true;
         GracePeriod = 0;
         Vector2 tmp = rb.velocity;
@@ -286,7 +286,7 @@ public class GloopMoveBase : MonoBehaviour
 
     public void StickToSurface(Transform surface)
     {
-        SoundManager.Instance.PlaySFX(eSFX.EPlStickToStickySurface);
+        SoundManager.Instance.PlaySFX(eSFX.EPlStickToStickySurface, this.gameObject);
         StickToSurfaceEvent?.Invoke();
         rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
         rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
@@ -301,7 +301,7 @@ public class GloopMoveBase : MonoBehaviour
 
     public void Unstick()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EPlUnstickFromStickySurface);
+        SoundManager.Instance.PlaySFX(eSFX.EPlUnstickFromStickySurface, this.gameObject);
         stickingToSurface = false;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;

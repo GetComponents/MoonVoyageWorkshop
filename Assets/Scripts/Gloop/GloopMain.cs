@@ -124,7 +124,6 @@ public class GloopMain : MonoBehaviour
 
     private void Start()
     {
-        //lookSensitivity = PlayerPrefs.GetFloat("MouseSpeed");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         MyMovement.AddMode();
@@ -146,7 +145,7 @@ public class GloopMain : MonoBehaviour
         grappleMode.enabled = false;
         gravityMode.enabled = false;
         gloopDefault.enabled = false;
-        SoundManager.Instance.PlaySFX(eSFX.EPlAmCursorAmbiance);
+        SoundManager.Instance.PlaySFX(eSFX.EPlAmCursorAmbiance, this.gameObject);
         //StartCoroutine(SpawnPlayer());
     }
 
@@ -228,7 +227,7 @@ public class GloopMain : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EPlRespawn);
+        SoundManager.Instance.PlaySFX(eSFX.EPlRespawn, this.gameObject);
         Respawn?.Invoke();
         Backpack.Instance.RespawnPlayer();
         /////////////CheckpointEvent/////////////////////////////////////////////////////////
@@ -267,13 +266,13 @@ public class GloopMain : MonoBehaviour
             currentHealth--;
             if (currentHealth > 0)
             {
-                SoundManager.Instance.PlaySFX(eSFX.EPlTakeDmg);
+                SoundManager.Instance.PlaySFX(eSFX.EPlTakeDmg, this.gameObject);
                 StartCoroutine(IFrames());
                 return;
             }
             currentHealth = scenicHealth;
         }
-        SoundManager.Instance.PlaySFX(eSFX.EPlDeath);
+        SoundManager.Instance.PlaySFX(eSFX.EPlDeath, this.gameObject);
         RespawnPlayer();
     }
 

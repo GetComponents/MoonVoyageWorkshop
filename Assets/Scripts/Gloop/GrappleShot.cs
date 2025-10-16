@@ -31,27 +31,9 @@ public class GrappleShot : MonoBehaviour
         Lr.SetPosition(1, transform.position);
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.tag == "Floor")
-    //    {
-    //        ObjectProperty op;
-    //        if (collision.TryGetComponent<ObjectProperty>(out op))
-    //        {
-    //            //tongueAnchorPos = op.CreateTonguePoint(transform.position);
-    //            player.AttachPoint(op.CreateTonguePoint(transform.position));
-    //        }
-    //        else
-    //        {
-    //            player.AttachPoint(transform.position);
-    //        }
-    //        //player.EnableTongue();
-    //    }
-    //}
-
     public void AttachToObject(TonguePoint point)
     {
-        SoundManager.Instance.PlaySFX(eSFX.EPlShotHitGround);
+        SoundManager.Instance.PlaySFX(eSFX.EPlShotHitGround, null);
         player.AttachPoint(point);
         player.EnableTongue();
         Destroy(gameObject);

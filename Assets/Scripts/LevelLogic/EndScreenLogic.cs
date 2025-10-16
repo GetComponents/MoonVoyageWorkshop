@@ -98,7 +98,7 @@ public class EndScreenLogic : MonoBehaviour
     private void PlayRandomSound()
     {
 
-        SoundManager.Instance.PlaySFX(eSFX.EObCollectStardust, true, true);
+        SoundManager.Instance.PlaySFX(eSFX.EObCollectStardust, this.gameObject, true);
         //int tmp = Random.Range(0, 5);
         //while (lastStarSound == tmp)
         //{

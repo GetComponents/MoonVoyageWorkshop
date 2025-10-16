@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class GoopGrapple : GloopMove
@@ -42,6 +43,8 @@ public class GoopGrapple : GloopMove
     [SerializeField]
     AudioClip shotSound;
 
+    UnityEvent onButtonUp = new UnityEvent();
+
     private void Start()
     {
         MyBase.StickToSurfaceEvent.AddListener(DisableTongue);
@@ -69,12 +72,14 @@ public class GoopGrapple : GloopMove
     private void RaycastToMousePos()
     {
         //SoundManager.Instance.PlayEffect(shotSound);
-        SoundManager.Instance.PlaySFX(eSFX.EPlShootGrappleShot);
+        SoundManager.Instance.PlaySFX(eSFX.EPlShootGrappleShot, this.gameObject);
         //AudioSource.PlayClipAtPoint(shotSound, transform.position);
         currentShot = Instantiate(gloopShot, firePoint.position, Quaternion.identity);
         currentShot.GetComponent<Rigidbody2D>().AddForce(Vector3.Normalize(firePoint.localPosition) * shotSpeed);
-        currentShot.GetComponent<GrappleShot>().player = this;
-        currentShot.GetComponent<GrappleShot>().Lr = tongueRender;
+        GrappleShot gs = currentShot.GetComponent<GrappleShot>();
+        gs.player = this;
+        gs.Lr = tongueRender;
+        onButtonUp.AddListener(() => { Destroy(gs); onButtonUp.RemoveAllListeners(); });
     }
 
     private void UpdateTongue()
@@ -137,6 +142,7 @@ public class GoopGrapple : GloopMove
         //tongue.autoConfigureDistance = true;
         tongue.connectedBody = null;
         tongue.connectedAnchor = Vector2.zero;
+        onButtonUp?.Invoke();
         //if (hitObj != null && hitObj.Moves)
         //{
         //    hitObj.KillLilDot();

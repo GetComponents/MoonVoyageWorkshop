@@ -109,7 +109,7 @@ public class MainGameUI : MonoBehaviour
 
     public void OpenMenu()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUIMenuOpenJingle);
+        SoundManager.Instance.PlaySFX(eSFX.EUIMenuOpenJingle, this.gameObject);
         gm.TimeScalers++;
         gm.CursorUnlockers++;
         openMenu = true;
@@ -119,7 +119,7 @@ public class MainGameUI : MonoBehaviour
 
     public void CloseMenu()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUIMenuCloseJingle);
+        SoundManager.Instance.PlaySFX(eSFX.EUIMenuCloseJingle, this.gameObject);
         gm.TimeScalers--;
         gm.CursorUnlockers--;
         openMenu = false;
@@ -134,14 +134,14 @@ public class MainGameUI : MonoBehaviour
         //masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
         //effectsSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
         //musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        SoundManager.Instance.PlaySFX(eSFX.EUIOpenSettingsJingle);
+        SoundManager.Instance.PlaySFX(eSFX.EUIOpenSettingsJingle, this.gameObject);
         gameMenu.SetActive(false);
         settingsMenu.SetActive(true);
     }
 
     public void CloseSettings()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EUICloseSettingsJingle);
+        SoundManager.Instance.PlaySFX(eSFX.EUICloseSettingsJingle, this.gameObject);
         openMenu = true;
         gameMenu.SetActive(true);
         settingsMenu.SetActive(false);

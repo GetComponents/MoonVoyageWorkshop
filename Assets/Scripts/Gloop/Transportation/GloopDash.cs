@@ -121,7 +121,7 @@ public class GloopDash : GloopMove
             MyBase.rb.velocity = Vector3.zero;
             DashDir = GloopMain.Instance.firePoint.localPosition;
             MyBase.rb.AddForce(Vector3.Normalize(DashDir) * DashStrength);
-            SoundManager.Instance.PlaySFX(eSFX.EPlDash);
+            SoundManager.Instance.PlaySFX(eSFX.EPlDash, this.gameObject);
             DashEvent?.Invoke();
             DashEndCor = StartCoroutine(DashEnd());
         }
@@ -129,7 +129,7 @@ public class GloopDash : GloopMove
 
     private void PlayRandomDashSound()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EPlDash, true, true);
+        SoundManager.Instance.PlaySFX(eSFX.EPlDash, this.gameObject, true, true);
     }
 
     private IEnumerator DashEnd()
