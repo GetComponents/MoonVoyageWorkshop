@@ -124,7 +124,7 @@ public class GloopMain : MonoBehaviour
 
     private void Start()
     {
-        lookSensitivity = PlayerPrefs.GetFloat("MouseSpeed");
+        //lookSensitivity = PlayerPrefs.GetFloat("MouseSpeed");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         MyMovement.AddMode();
