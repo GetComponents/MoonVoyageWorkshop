@@ -157,6 +157,7 @@ public class ObjectProperty : MonoBehaviour
                     {
                         bounceAnim.SetBool("Bounce", true);
                     }
+                    SoundManager.Instance.PlaySFX(eSFX.EObPopBubble, null);
                     break;
                 }
                 GloopDash tmp = (GloopDash)GloopMain.Instance.MyMovement;
@@ -338,7 +339,8 @@ public class ObjectProperty : MonoBehaviour
         if (collision.gameObject.tag == "Hookshot")
         {
             GrappleShot gs = collision.gameObject.GetComponent<GrappleShot>();
-            gs.AttachToObject(CreateTonguePoint(collision.transform.position));
+            if (gs != null)
+                gs.AttachToObject(CreateTonguePoint(collision.transform.position));
         }
     }
 

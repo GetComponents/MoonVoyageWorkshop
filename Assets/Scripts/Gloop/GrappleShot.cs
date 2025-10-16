@@ -33,7 +33,7 @@ public class GrappleShot : MonoBehaviour
 
     public void AttachToObject(TonguePoint point)
     {
-        SoundManager.Instance.PlaySFX(eSFX.EPlShotHitGround, this.gameObject);
+        SoundManager.Instance.PlaySFX(eSFX.EPlShotHitGround, null);
         player.AttachPoint(point);
         player.EnableTongue();
         Destroy(gameObject);

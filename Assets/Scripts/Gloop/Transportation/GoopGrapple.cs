@@ -43,7 +43,7 @@ public class GoopGrapple : GloopMove
     [SerializeField]
     AudioClip shotSound;
 
-    UnityEvent onButtonUp;
+    UnityEvent onButtonUp = new UnityEvent();
 
     private void Start()
     {

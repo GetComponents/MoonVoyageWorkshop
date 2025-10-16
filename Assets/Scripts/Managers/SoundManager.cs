@@ -194,7 +194,7 @@ UIContinueGame;
         if (startPlay)
         {
             tmp.Play();
-            Debug.Log("Playing sfx: " + sfx + "on " + origin);
+            //Debug.Log("Playing sfx: " + sfx + "on " + origin);
         }
         else
             tmp.Stop();
