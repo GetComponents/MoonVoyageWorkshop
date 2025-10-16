@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -54,6 +56,9 @@ UIOpenSettingsJingle,
 UICloseSettingsJingle,
 UIButtonPress,
 UIContinueGame;
+
+    [SerializeField]
+    SoundEffect[] allSoundEffects;
 
 
 
@@ -117,129 +122,197 @@ UIContinueGame;
     //    SoundEffects.Add(tmp);
     //}
 
-    public void PlaySFX(eSFX sfx, bool startPlay = true, bool randomPitch = false)
+    public void PlaySFX(eSFX sfx, GameObject origin, bool startPlay = true, bool randomPitch = false)
     {
-        AudioSource tmp;
-
-        switch (sfx)
+        AudioSource tmp = null;
+        if (origin != null)
         {
-            case eSFX.EPlAmCursorAmbiance:
-                tmp = PlAmCursorAmbiance;
+            for (int i = 0; i < allSoundEffects.Length; i++)
+            {
+                if (allSoundEffects[i].callText != sfx)
+                {
+                    continue;
+                }
+                AudioSource[] aSources = origin.GetComponents<AudioSource>();
+                bool foundPair = false;
+                for (int j = 0; j < allSoundEffects[i].AttachedAudioSources.Count; j++)
+                {
+                    for (int k = 0; k < aSources.Length; k++)
+                    {
+                        if (aSources[k] == allSoundEffects[i].AttachedAudioSources[j])
+                        {
+                            foundPair = true;
+                            tmp = allSoundEffects[i].AttachedAudioSources[j];
+                            break;
+                        }
+                    }
+                    if (foundPair == true)
+                        break;
+                }
+                if (!foundPair)
+                {
+                    tmp = origin.AddComponent<AudioSource>();
+                    CopyComp.CopyAudioSource(allSoundEffects[i].source[UnityEngine.Random.Range(0, allSoundEffects[i].source.Length)], tmp);
+                    //CopyComp.GetCopyOf(allSoundEffects[i].source[UnityEngine.Random.Range(0, allSoundEffects[i].source.Length)], tmp);
+                    allSoundEffects[i].AttachedAudioSources.Add(tmp);
+                }
+                else if (allSoundEffects[i].source.Length >= 2)
+                {
+                    CopyComp.CopyAudioSource(allSoundEffects[i].source[UnityEngine.Random.Range(0, allSoundEffects[i].source.Length)], tmp);
+                }
                 break;
-            case eSFX.EPlDeath:
-                tmp = PlDeath;
-                break;
-            case eSFX.EPlRespawn:
-                tmp = PlRespawn;
-                break;
-            case eSFX.EPlTakeDmg:
-                tmp = PlTakeDmg;
-                break;
-            case eSFX.EPlChangeGravityDown:
-                tmp = PlChangeGravityDown;
-                break;
-            case eSFX.EPlChangeGravityUp:
-                tmp = PlChangeGravityUp;
-                break;
-            case eSFX.EPlFloatLoop:
-                tmp = PlFloatLoop;
-                break;
-            case eSFX.EPlDash:
-                tmp = PlDash;
-                break;
-            case eSFX.EPlFlyingAroundLoop:
-                tmp = PlFlyingAroundLoop;
-                break;
-            case eSFX.EPlFootstepLoop:
-                tmp = PlFootstepLoop;
-                break;
-            case eSFX.EPlJump:
-                tmp = PlJump;
-                break;
-            case eSFX.EPlStickToStickySurface:
-                tmp = PlStickToStickySurface;
-                break;
-            case eSFX.EPlUnstickFromStickySurface:
-                tmp = PlUnstickFromStickySurface;
-                break;
-            case eSFX.EPlShootGrappleShot:
-                tmp = PlShootGrappleShot;
-                break;
-            case eSFX.EPlShotHitGround:
-                tmp = PlShotHitGround;
-                break;
-            case eSFX.EObPlayerHitsGround:
-                tmp = ObPlayerHitsGround;
-                break;
-            case eSFX.EObShootBubble:
-                tmp = ObShootBubble;
-                break;
-            case eSFX.EObBlockBreak:
-                tmp = ObBlockBreak;
-                break;
-            case eSFX.EObKeyUse:
-                tmp = ObKeyUse;
-                break;
-            case eSFX.EObAmKey:
-                tmp = ObAmKey;
-                break;
-            case eSFX.EObAmStardust:
-                tmp = ObAmStardust;
-                break;
-            case eSFX.EObMushroomBounce:
-                tmp = ObMushroomBounce;
-                break;
-            case eSFX.EObCollectStardust:
-                tmp = ObCollectStardust;
-                break;
-            case eSFX.EObCollectKey:
-                tmp = ObCollectKey;
-                break;
-            case eSFX.EObBouncePlantBounce:
-                tmp = ObBouncePlantBounce;
-                break;
-            case eSFX.EObGravitySwitch:
-                tmp = ObGravitySwitch;
-                break;
-            case eSFX.EObCatapultPlayerStart:
-                tmp = ObCatapultPlayerStart;
-                break;
-            case eSFX.EObPopBubble:
-                tmp = ObPopBubble;
-                break;
-            case eSFX.EObTeleportPlayer:
-                tmp = ObTeleportPlayer;
-                break;
-            case eSFX.EUIMenuOpenJingle:
-                tmp = UIMenuOpenJingle;
-                break;
-            case eSFX.EUIMenuCloseJingle:
-                tmp = UIMenuCloseJingle;
-                break;
-            case eSFX.EUIOpenSettingsJingle:
-                tmp = UIOpenSettingsJingle;
-                break;
-            case eSFX.EUICloseSettingsJingle:
-                tmp = UICloseSettingsJingle;
-                break;
-            case eSFX.EUIButtonPress:
-                tmp = UIButtonPress;
-                break;
-            case eSFX.EUIContinueGame:
-                tmp = UIContinueGame;
-                break;
-            default:
-                tmp = PlDeath;
-                break;
+            }
+            if (tmp == null)
+            {
+                //Debug.Log($"Inspector doenst have setup for eSFX '{sfx}'");
+                return;
+            }
         }
+        else
+        {
+            for (int i = 0; i < allSoundEffects.Length; i++)
+            {
+                if (allSoundEffects[i].callText != sfx)
+                {
+                    continue;
+                }
+                tmp = allSoundEffects[i].source[UnityEngine.Random.Range(0, allSoundEffects[i].source.Length)];
+            }
+            if (tmp == null)
+            {
+                //Debug.Log($"Inspector doenst have setup for eSFX '{sfx}'");
+                return;
+            }
+        }
+
+
+
+        //PlaySound(sfx);
         if (randomPitch)
-            tmp.pitch = Random.Range(-maxPitchChange, maxPitchChange) + 1;
+            tmp.pitch = UnityEngine.Random.Range(-maxPitchChange, maxPitchChange) + 1;
 
         if (startPlay)
+        {
             tmp.Play();
+            Debug.Log("Playing sfx: " + sfx + "on " + origin);
+        }
         else
             tmp.Stop();
     }
+
+
+
+    //switch (sfx)
+    //{
+    //    case eSFX.EPlAmCursorAmbiance:
+    //        tmp = PlAmCursorAmbiance;
+    //        break;
+    //    case eSFX.EPlDeath:
+    //        tmp = PlDeath;
+    //        break;
+    //    case eSFX.EPlRespawn:
+    //        tmp = PlRespawn;
+    //        break;
+    //    case eSFX.EPlTakeDmg:
+    //        tmp = PlTakeDmg;
+    //        break;
+    //    case eSFX.EPlChangeGravityDown:
+    //        tmp = PlChangeGravityDown;
+    //        break;
+    //    case eSFX.EPlChangeGravityUp:
+    //        tmp = PlChangeGravityUp;
+    //        break;
+    //    case eSFX.EPlFloatLoop:
+    //        tmp = PlFloatLoop;
+    //        break;
+    //    case eSFX.EPlDash:
+    //        tmp = PlDash;
+    //        break;
+    //    case eSFX.EPlFlyingAroundLoop:
+    //        tmp = PlFlyingAroundLoop;
+    //        break;
+    //    case eSFX.EPlFootstepLoop:
+    //        tmp = PlFootstepLoop;
+    //        break;
+    //    case eSFX.EPlJump:
+    //        tmp = PlJump;
+    //        break;
+    //    case eSFX.EPlStickToStickySurface:
+    //        tmp = PlStickToStickySurface;
+    //        break;
+    //    case eSFX.EPlUnstickFromStickySurface:
+    //        tmp = PlUnstickFromStickySurface;
+    //        break;
+    //    case eSFX.EPlShootGrappleShot:
+    //        tmp = PlShootGrappleShot;
+    //        break;
+    //    case eSFX.EPlShotHitGround:
+    //        tmp = PlShotHitGround;
+    //        break;
+    //    case eSFX.EObPlayerHitsGround:
+    //        tmp = ObPlayerHitsGround;
+    //        break;
+    //    case eSFX.EObShootBubble:
+    //        tmp = ObShootBubble;
+    //        break;
+    //    case eSFX.EObBlockBreak:
+    //        tmp = ObBlockBreak;
+    //        break;
+    //    case eSFX.EObKeyUse:
+    //        tmp = ObKeyUse;
+    //        break;
+    //    case eSFX.EObAmKey:
+    //        tmp = ObAmKey;
+    //        break;
+    //    case eSFX.EObAmStardust:
+    //        tmp = ObAmStardust;
+    //        break;
+    //    case eSFX.EObMushroomBounce:
+    //        tmp = ObMushroomBounce;
+    //        break;
+    //    case eSFX.EObCollectStardust:
+    //        tmp = ObCollectStardust;
+    //        break;
+    //    case eSFX.EObCollectKey:
+    //        tmp = ObCollectKey;
+    //        break;
+    //    case eSFX.EObBouncePlantBounce:
+    //        tmp = ObBouncePlantBounce;
+    //        break;
+    //    case eSFX.EObGravitySwitch:
+    //        tmp = ObGravitySwitch;
+    //        break;
+    //    case eSFX.EObCatapultPlayerStart:
+    //        tmp = ObCatapultPlayerStart;
+    //        break;
+    //    case eSFX.EObPopBubble:
+    //        tmp = ObPopBubble;
+    //        break;
+    //    case eSFX.EObTeleportPlayer:
+    //        tmp = ObTeleportPlayer;
+    //        break;
+    //    case eSFX.EUIMenuOpenJingle:
+    //        tmp = UIMenuOpenJingle;
+    //        break;
+    //    case eSFX.EUIMenuCloseJingle:
+    //        tmp = UIMenuCloseJingle;
+    //        break;
+    //    case eSFX.EUIOpenSettingsJingle:
+    //        tmp = UIOpenSettingsJingle;
+    //        break;
+    //    case eSFX.EUICloseSettingsJingle:
+    //        tmp = UICloseSettingsJingle;
+    //        break;
+    //    case eSFX.EUIButtonPress:
+    //        tmp = UIButtonPress;
+    //        break;
+    //    case eSFX.EUIContinueGame:
+    //        tmp = UIContinueGame;
+    //        break;
+    //    default:
+    //        tmp = PlDeath;
+    //        break;
+    //}
 
     public void ChangeMasterVolume(float amount)
     {
@@ -258,11 +331,82 @@ UIContinueGame;
         soundMixer.SetFloat("MusicVolume", Mathf.Log10(amount) * 20);
         PlayerPrefs.SetFloat("MusicVolume", amount);
     }
+
+    public void PlaySound(eSFX sound)
+    {
+        if (sound == eSFX.NONE)
+            return;
+        for (int i = 0; i < allSoundEffects.Length; i++)
+        {
+            if (allSoundEffects[i].callText == sound)
+            {
+                allSoundEffects[i].source[UnityEngine.Random.Range(0, allSoundEffects[i].source.Length)].Play();
+                return;
+            }
+        }
+
+        Debug.Log("Could not find sound: " + sound);
+    }
+}
+
+[System.Serializable]
+struct SoundEffect
+{
+    public eSFX callText;
+    public AudioSource[] source;
+    [HideInInspector]
+    public List<AudioSource> AttachedAudioSources;
+    [HideInInspector]
+    public float[] StandardVolume;
+
+}
+
+public static class CopyComp
+{
+    public static T GetCopyOf<T>(this Component comp, T other) where T : Component
+    {
+        Type type = comp.GetType();
+        if (type != other.GetType()) return null; // type mis-match
+        BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Default | BindingFlags.DeclaredOnly;
+        PropertyInfo[] pinfos = type.GetProperties(flags);
+        foreach (var pinfo in pinfos)
+        {
+            if (pinfo.CanWrite)
+            {
+                try
+                {
+                    pinfo.SetValue(comp, pinfo.GetValue(other, null), null);
+                }
+                catch { } // In case of NotImplementedException being thrown. For some reason specifying that exception didn't seem to catch it, so I didn't catch anything specific.
+            }
+        }
+        FieldInfo[] finfos = type.GetFields(flags);
+        foreach (var finfo in finfos)
+        {
+            finfo.SetValue(comp, finfo.GetValue(other));
+        }
+        return comp as T;
+    }
+
+    public static void CopyAudioSource(AudioSource origin, AudioSource destination)
+    {
+        destination.clip = origin.clip;
+        destination.volume = origin.volume;
+        destination.playOnAwake = origin.playOnAwake;
+        destination.rolloffMode = origin.rolloffMode;
+        destination.minDistance = origin.minDistance;
+        destination.maxDistance = origin.maxDistance;
+        destination.spatialBlend = origin.spatialBlend;
+        destination.loop = origin.loop;
+        destination.outputAudioMixerGroup = origin.outputAudioMixerGroup;
+
+    }
 }
 
 
 public enum eSFX
 {
+    NONE,
     EPlAmCursorAmbiance,
     EPlDeath,
     EPlRespawn,
