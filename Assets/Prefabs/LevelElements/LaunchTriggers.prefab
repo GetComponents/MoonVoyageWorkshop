@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 57108756417060189}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.03, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7572851192803484649}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 89534951, guid: fe2f182ba6c939f40aa6b138c8ddb758, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68d6ca99a577dc64b8675337ac6693d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -260,4 +260,11 @@ MonoBehaviour:
   destroyOnInteract: 0
   floorOnInteract: 1
   ignoreCatapultCollision: 0
+  stopCatapultCollision: 1
+  InteractedWithPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  ExitInteractionWithPlayer:
+    m_PersistentCalls:
+      m_Calls: []
   interactionParticle: {fileID: 0}
