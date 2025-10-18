@@ -23,7 +23,7 @@ public class ObjectProperty : MonoBehaviour
     [HideInInspector]
     public float RotationSpeed;
     [SerializeField]
-    Animator bounceAnim;
+    Animator bounceAnim, otherAnim;
     [SerializeField]
     AudioClip interactionSXF;
     [SerializeField]
@@ -38,8 +38,10 @@ public class ObjectProperty : MonoBehaviour
     bool ignoreCatapultCollision, stopCatapultCollision = true;
     public UnityEvent InteractedWithPlayer, ExitInteractionWithPlayer;
     [SerializeField]
-    GameObject interactionParticle;
+    GameObject interactionParticle, interactionParticle2;
     bool playerInBubble;
+
+
 
     private void Start()
     {
@@ -100,6 +102,7 @@ public class ObjectProperty : MonoBehaviour
                 break;
             case ObjectType.STICKY:
                 var player = GloopMain.Instance.MyMovement.MyBase;
+                SoundManager.Instance.PlaySFX(eSFX.EPlStickToStickySurface, this.gameObject);
                 player.StickToSurface(transform);
                 if (Moves || Rotates)
                 {
@@ -143,14 +146,16 @@ public class ObjectProperty : MonoBehaviour
                 {
                     bounceAnim.SetBool("Bounce", true);
                 }
+                if (otherAnim != null)
+                    otherAnim.SetBool("PlayAnim", true);
                 break;
             case ObjectType.GRAVITYSWITCH:
                 GameManager.Instance.GravitySwitch?.Invoke();
                 SoundManager.Instance.PlaySFX(eSFX.EObGravitySwitch, this.gameObject);
                 break;
             case ObjectType.BUBBLE:
-                if (GloopMain.Instance.CurrentMode != EMode.DASH)
-                {
+                //if (GloopMain.Instance.CurrentMode != EMode.DASH)
+                //{
                     obj.velocity *= LockDir;
                     GloopMain.Instance.MyMovement.MyBase.AddForce(launchStrength * transform.up);
                     if (bounceAnim != null)
@@ -158,29 +163,32 @@ public class ObjectProperty : MonoBehaviour
                         bounceAnim.SetBool("Bounce", true);
                     }
                     SoundManager.Instance.PlaySFX(eSFX.EObPopBubble, null);
+                    if (interactionParticle != null)
+                        Instantiate(interactionParticle, transform.position, Quaternion.identity);
                     break;
-                }
-                GloopDash tmp = (GloopDash)GloopMain.Instance.MyMovement;
-                if (tmp.IsDashing)
-                {
-                    //GetComponent<Bubble>().EncapsulatePlayer();
-                    GloopMain.Instance.MyMovement.MyBase.StickToSurface(transform);
-                    GloopMain.Instance.MyMovement.MyBase.transform.localPosition = Vector3.zero;
-                    GetComponent<ObjectMover>().StartToSlowDown(tmp.DashDir * tmp.DashStrength);
-                    GloopMain.Instance.MyMovement.MyBase.UnstickToSurfaceEvent.AddListener(PopBubble);
-                    destroyOnInteract = false;
-                    playerInBubble = true;
-                }
-                else
-                {
-                    obj.velocity *= LockDir;
-                    GloopMain.Instance.MyMovement.MyBase.AddForce(launchStrength * transform.up);
-                    if (bounceAnim != null)
-                    {
-                        bounceAnim.SetBool("Bounce", true);
-                    }
-                    break;
-                }
+                //}
+                //GloopDash tmp = (GloopDash)GloopMain.Instance.MyMovement;
+                //if (tmp.IsDashing)
+                //{
+                //    //GetComponent<Bubble>().EncapsulatePlayer();
+                //    GloopMain.Instance.MyMovement.MyBase.StickToSurface(transform);
+                //    GloopMain.Instance.MyMovement.MyBase.transform.localPosition = Vector3.zero;
+                //    GetComponent<ObjectMover>().StartToSlowDown(tmp.DashDir * tmp.DashStrength);
+                //    GloopMain.Instance.MyMovement.MyBase.UnstickToSurfaceEvent.AddListener(PopBubble);
+                //    destroyOnInteract = false;
+                //    playerInBubble = true;
+                //}
+                //else
+                //{
+                //    obj.velocity *= LockDir;
+                //    GloopMain.Instance.MyMovement.MyBase.AddForce(launchStrength * transform.up);
+                //    if (bounceAnim != null)
+                //    {
+                //        bounceAnim.SetBool("Bounce", true);
+                //    }
+                //    SoundManager.Instance.PlaySFX(eSFX.EObPopBubble, null);
+                //    break;
+                //}
                 break;
             default:
                 break;
@@ -278,6 +286,10 @@ public class ObjectProperty : MonoBehaviour
         GloopMain.Instance.MyMovement.MyBase.VelocityToHold = transform.up.normalized * launchStrength;
         GloopMain.Instance.MyMovement.MyBase.HoldingVelocity = true;
         GloopMain.Instance.MyMovement.MyBase.InputLocked++;
+        if (interactionParticle2 != null)
+            Instantiate(interactionParticle2, transform);
+        if (otherAnim != null)
+            otherAnim.SetBool("PlayAnim", true);
         //GloopMain.Instance.MyMovement.MyBase.rb.gravityScale = 0;
         GloopMain.Instance.MyMovement.MyBase.UnstickToSurfaceEvent.RemoveListener(CatapultPlayer);
         if (GloopMain.Instance.CurrentMode == EMode.DASH)
@@ -368,6 +380,11 @@ public class ObjectProperty : MonoBehaviour
             }
             ExitInteractionWithPlayer?.Invoke();
         }
+    }
+
+    public void StopAnim()
+    {
+        otherAnim.SetBool("PlayAnim", false);
     }
 }
 

@@ -7,6 +7,7 @@ public class SelfDestructTimer : MonoBehaviour
     [SerializeField]
     float timeTillDeath;
     float currentTime;
+
     void Update()
     {
         currentTime += Time.deltaTime;

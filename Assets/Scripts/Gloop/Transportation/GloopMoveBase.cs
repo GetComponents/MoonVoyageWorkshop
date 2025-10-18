@@ -80,7 +80,7 @@ public class GloopMoveBase : MonoBehaviour
         //if (context.phase)
         if (Mathf.Approximately(CurrentMovement.x, 0) && !Mathf.Approximately(context.ReadValue<Vector2>().x, 0))
         {
-            if (GroundedAmount > 0)
+            if (GroundedAmount > 0 && !SoundManager.Instance.SFXIsPlaying(eSFX.EPlFootstepLoop, this.gameObject))
             {
                 SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, this.gameObject);
             }
@@ -254,6 +254,11 @@ public class GloopMoveBase : MonoBehaviour
         airborneMul = 1;
         GloopAnim.SetBool("Grounded", true);
         GloopMain.Instance.MyMovement.EnterGround();
+        if (!SoundManager.Instance.SFXIsPlaying(eSFX.EPlFootstepLoop, this.gameObject) && !Mathf.Approximately(CurrentMovement.x, 0))
+        {
+            SoundManager.Instance.PlaySFX(eSFX.EPlFootstepLoop, this.gameObject);
+        }
+
         if (HoldingVelocity == true)
         {
             HoldingVelocity = false;
@@ -286,7 +291,7 @@ public class GloopMoveBase : MonoBehaviour
 
     public void StickToSurface(Transform surface)
     {
-        SoundManager.Instance.PlaySFX(eSFX.EPlStickToStickySurface, this.gameObject);
+        
         StickToSurfaceEvent?.Invoke();
         rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
         rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
@@ -312,7 +317,7 @@ public class GloopMoveBase : MonoBehaviour
 
     public void UnparentFromPlatform()
     {
-        Debug.Log("Unparented");
+        //Debug.Log("Unparented");
         transform.SetParent(GloopMain.Instance.transform);
         transform.eulerAngles = Vector3.zero;
         transform.localScale = Vector3.one;

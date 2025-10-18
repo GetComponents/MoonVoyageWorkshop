@@ -92,6 +92,7 @@ public class GoopGrapple : GloopMove
 
     public void EnableTongue()
     {
+        SoundManager.Instance.PlaySFX(eSFX.EPlFlyingAroundLoop, this.gameObject);
         tongue.enabled = true;
         tongueEnabled = true;
         tongueRender.enabled = true;
@@ -143,6 +144,7 @@ public class GoopGrapple : GloopMove
         tongue.connectedBody = null;
         tongue.connectedAnchor = Vector2.zero;
         onButtonUp?.Invoke();
+        SoundManager.Instance.PlaySFX(eSFX.EPlFlyingAroundLoop, this.gameObject, false);
         //if (hitObj != null && hitObj.Moves)
         //{
         //    hitObj.KillLilDot();

@@ -30,6 +30,8 @@ public class PowerSelectorUI : MonoBehaviour
 
     public void OpenSelector(InputAction.CallbackContext context)
     {
+        if (GloopMain.Instance.MyMovement.MyBase.GroundedAmount == 0)
+            return;
         //return;
         if (context.started)
         {
@@ -37,7 +39,7 @@ public class PowerSelectorUI : MonoBehaviour
             EnableCanvas(true);
             changedPower = false;
         }
-        else if (context.canceled)
+        else if (context.canceled && canvas.enabled == true)
         {
             //WwisePlay ContinueSoundtrack at normal speed and volume
             EnableCanvas(false);
@@ -97,11 +99,13 @@ public class PowerSelectorUI : MonoBehaviour
         if (canvas.enabled)
         {
             GameManager.Instance.CursorUnlockers++;
+            GloopMain.Instance.LockInput(true);
             GameManager.Instance.TimeScalers++;
         }
         else
         {
             GameManager.Instance.CursorUnlockers--;
+            GloopMain.Instance.LockInput(false);
             GameManager.Instance.TimeScalers--;
         }
     }

@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5254526375722464854}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.79, y: 1.16, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5254526375722464851
 SpriteRenderer:
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63b71a2c19fbadb4b8b97aec9150e3c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,13 +109,22 @@ MonoBehaviour:
   MoveSpeed: 0
   RotationSpeed: 0
   bounceAnim: {fileID: 0}
+  otherAnim: {fileID: 0}
   interactionSXF: {fileID: 0}
   reactToGravity: 0
   isSticky: 0
   destroyOnInteract: 0
   floorOnInteract: 1
   ignoreCatapultCollision: 0
+  stopCatapultCollision: 1
+  InteractedWithPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  ExitInteractionWithPlayer:
+    m_PersistentCalls:
+      m_Calls: []
   interactionParticle: {fileID: 0}
+  interactionParticle2: {fileID: 0}
 --- !u!114 &5254526375722464849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,10 +140,15 @@ MonoBehaviour:
   RotationSpeed: 90
   MovementSpeed: 0
   Path: []
+  minRotation: 0
+  maxRotation: 0
+  goFullCircle: 0
   ProjectileDirection: {x: 0, y: 0}
   movement: 0
   StopTimer: 0
   dot: {fileID: 0}
+  slowDownTime: 0
+  baseMoveSpeed: 0
 --- !u!58 &5254526375722464861
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -145,6 +159,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

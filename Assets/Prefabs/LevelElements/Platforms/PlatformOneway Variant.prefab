@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 625590975400371654, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
@@ -71,6 +72,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2081011155628547436, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081011155628547436, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081011155628547436, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.41
+      objectReference: {fileID: 0}
     - target: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
       propertyPath: m_Name
       value: PlatformOneway Variant
@@ -79,7 +92,24 @@ PrefabInstance:
       propertyPath: m_UsedByEffector
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8808761670468300193, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a586ceedd226a2046906c3a4cac40d13, type: 3}
+    m_RemovedComponents:
+    - {fileID: 625590975400371654, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521771713}
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521771716}
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6644251323742005331}
   m_SourcePrefab: {fileID: 100100000, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
 --- !u!1 &3093601188183840306 stripped
 GameObject:
@@ -127,6 +157,7 @@ MonoBehaviour:
   MoveSpeed: 0
   RotationSpeed: 0
   bounceAnim: {fileID: 0}
+  otherAnim: {fileID: 0}
   interactionSXF: {fileID: 0}
   reactToGravity: 0
   isSticky: 0
@@ -141,6 +172,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactionParticle: {fileID: 0}
+  interactionParticle2: {fileID: 0}
 --- !u!114 &6644251323742005331
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ public class BreakableWall : MonoBehaviour
     [SerializeField]
     Collider2D myCol;
     bool enteredGround;
+    [SerializeField]
+    GameObject particleEffect;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -62,6 +64,11 @@ public class BreakableWall : MonoBehaviour
 
     private void Break()
     {
+        if (particleEffect != null)
+        {
+            GameObject temp = Instantiate(particleEffect, transform.position, Quaternion.identity);
+            temp.transform.localScale = transform.localScale;
+        }
         SoundManager.Instance.PlaySFX(eSFX.EObBlockBreak, null);
         Backpack.Instance.LosableObjects.Add(gameObject);
         GloopDash tmp = (GloopDash)GloopMain.Instance.MyMovement;

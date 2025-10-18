@@ -102,6 +102,7 @@ public class GloopMain : MonoBehaviour
             MyMovement.AddMode();
         }
     }
+    [SerializeField]
     private EMode currentMode;
 
     private void Awake()
@@ -115,6 +116,7 @@ public class GloopMain : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        CurrentMode = currentMode;
         Application.targetFrameRate = 60;
         if (hasScenicHealth)
         {

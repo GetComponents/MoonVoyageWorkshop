@@ -23,10 +23,10 @@ public class GrappleShot : MonoBehaviour
             Destroy(gameObject);
             Lr.enabled = false;
         }
-        if ((!Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Space)) || GloopMain.Instance.MyMovement != player)
-        {
-            Destroy(gameObject);
-        }
+        //if ((!Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Space)) || GloopMain.Instance.MyMovement != player)
+        //{
+        //    Destroy(gameObject);
+        //}
         Lr.SetPosition(0, player.transform.position);
         Lr.SetPosition(1, transform.position);
     }

@@ -103,6 +103,7 @@ public class GloopGlide : GloopMove
         FlySound.Stop();
         MyBase.GloopAnim.SetBool("Flying", false);
         MyBase.GloopAnim.SetBool("Walking", false);
+        SoundManager.Instance.PlaySFX(eSFX.EPlFloatLoop, this.gameObject, false);
         MyBase.rb.gravityScale = 1;
     }
 

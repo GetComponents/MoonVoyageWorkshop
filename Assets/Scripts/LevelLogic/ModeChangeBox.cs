@@ -10,6 +10,8 @@ public class ModeChangeBox : MonoBehaviour
     bool OneTimeUse;
     [SerializeField]
     AudioClip interactionSound;
+    [SerializeField]
+    GameObject interactionPFX;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,7 +23,8 @@ public class ModeChangeBox : MonoBehaviour
                 gameObject.SetActive(false);
             }
             TransformPlayer();
-            //SoundManager.Instance.PlayEffect(interactionSound);
+            Instantiate(interactionPFX, transform.position, Quaternion.identity);
+            SoundManager.Instance.PlaySFX(eSFX.EObCollectStardust, null);
         }
     }
 

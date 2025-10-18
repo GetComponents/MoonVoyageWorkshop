@@ -8,6 +8,28 @@ public class GloopGravity : GloopMove
     [SerializeField]
     AnimMethods spriteRotator;
 
+
+    [SerializeField]
+    int maxGravityCharges;
+
+    int gravityCharges
+    {
+        get => m_gravityCharges;
+        set
+        {
+            m_gravityCharges = value;
+            if (m_gravityCharges < 1)
+            {
+                ModeSprite.color = ModeColor * 0.5f;
+            }
+            else
+            {
+                ModeSprite.color = ModeColor;
+            }
+        }
+    }
+    int m_gravityCharges;
+
     private void Start()
     {
         GameManager.Instance.GravitySwitch.AddListener(GravitySwitch);
@@ -64,6 +86,7 @@ public class GloopGravity : GloopMove
         {
             ModeSprite.color = ModeColor;
         }
+        gravityCharges = maxGravityCharges;
     }
 
     //private void OnTriggerExit2D(Collider2D collision)
@@ -83,8 +106,9 @@ public class GloopGravity : GloopMove
     {
         if (MyBase.InputLocked > 0 || MyBase.PauseLocked > 0)
             return;
-        if (context.started)
+        if (context.started && gravityCharges > 0)
         {
+            gravityCharges--;
             GameManager.Instance.GravitySwitch?.Invoke();
         }
     }

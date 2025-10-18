@@ -19,44 +19,6 @@ public class SoundManager : MonoBehaviour
     float maxPitchChange;
 
     public AudioSource Soundtrack;
-
-    [SerializeField]
-    AudioSource PlAmCursorAmbiance,
-PlDeath,
-PlRespawn,
-PlTakeDmg,
-PlChangeGravityDown,
-PlChangeGravityUp,
-PlFloatLoop,
-PlDash,
-PlFlyingAroundLoop,
-PlFootstepLoop,
-PlJump,
-PlStickToStickySurface,
-PlUnstickFromStickySurface,
-PlShootGrappleShot,
-PlShotHitGround,
-ObPlayerHitsGround,
-ObShootBubble,
-ObBlockBreak,
-ObKeyUse,
-ObAmKey,
-ObAmStardust,
-ObMushroomBounce,
-ObCollectStardust,
-ObCollectKey,
-ObBouncePlantBounce,
-ObGravitySwitch,
-ObCatapultPlayerStart,
-ObPopBubble,
-ObTeleportPlayer,
-UIMenuOpenJingle,
-UIMenuCloseJingle,
-UIOpenSettingsJingle,
-UICloseSettingsJingle,
-UIButtonPress,
-UIContinueGame;
-
     [SerializeField]
     SoundEffect[] allSoundEffects;
 
@@ -121,6 +83,38 @@ UIContinueGame;
     //    tmp.Play();
     //    SoundEffects.Add(tmp);
     //}
+
+    public bool SFXIsPlaying(eSFX sfx, GameObject origin)
+    {
+        AudioSource tmp = null;
+        if (origin != null)
+        {
+            for (int i = 0; i < allSoundEffects.Length; i++)
+            {
+                if (allSoundEffects[i].callText != sfx)
+                {
+                    continue;
+                }
+                AudioSource[] aSources = origin.GetComponents<AudioSource>();
+                bool foundPair = false;
+                for (int j = 0; j < allSoundEffects[i].AttachedAudioSources.Count; j++)
+                {
+                    for (int k = 0; k < aSources.Length; k++)
+                    {
+                        if (aSources[k] == allSoundEffects[i].AttachedAudioSources[j])
+                        {
+                            foundPair = true;
+                            tmp = allSoundEffects[i].AttachedAudioSources[j];
+                            return tmp.isPlaying;
+                        }
+                    }
+                    if (foundPair == true)
+                        return false;
+                }
+            }
+        }
+        return false;
+    }
 
     public void PlaySFX(eSFX sfx, GameObject origin, bool startPlay = true, bool randomPitch = false)
     {
@@ -199,120 +193,6 @@ UIContinueGame;
         else
             tmp.Stop();
     }
-
-
-
-    //switch (sfx)
-    //{
-    //    case eSFX.EPlAmCursorAmbiance:
-    //        tmp = PlAmCursorAmbiance;
-    //        break;
-    //    case eSFX.EPlDeath:
-    //        tmp = PlDeath;
-    //        break;
-    //    case eSFX.EPlRespawn:
-    //        tmp = PlRespawn;
-    //        break;
-    //    case eSFX.EPlTakeDmg:
-    //        tmp = PlTakeDmg;
-    //        break;
-    //    case eSFX.EPlChangeGravityDown:
-    //        tmp = PlChangeGravityDown;
-    //        break;
-    //    case eSFX.EPlChangeGravityUp:
-    //        tmp = PlChangeGravityUp;
-    //        break;
-    //    case eSFX.EPlFloatLoop:
-    //        tmp = PlFloatLoop;
-    //        break;
-    //    case eSFX.EPlDash:
-    //        tmp = PlDash;
-    //        break;
-    //    case eSFX.EPlFlyingAroundLoop:
-    //        tmp = PlFlyingAroundLoop;
-    //        break;
-    //    case eSFX.EPlFootstepLoop:
-    //        tmp = PlFootstepLoop;
-    //        break;
-    //    case eSFX.EPlJump:
-    //        tmp = PlJump;
-    //        break;
-    //    case eSFX.EPlStickToStickySurface:
-    //        tmp = PlStickToStickySurface;
-    //        break;
-    //    case eSFX.EPlUnstickFromStickySurface:
-    //        tmp = PlUnstickFromStickySurface;
-    //        break;
-    //    case eSFX.EPlShootGrappleShot:
-    //        tmp = PlShootGrappleShot;
-    //        break;
-    //    case eSFX.EPlShotHitGround:
-    //        tmp = PlShotHitGround;
-    //        break;
-    //    case eSFX.EObPlayerHitsGround:
-    //        tmp = ObPlayerHitsGround;
-    //        break;
-    //    case eSFX.EObShootBubble:
-    //        tmp = ObShootBubble;
-    //        break;
-    //    case eSFX.EObBlockBreak:
-    //        tmp = ObBlockBreak;
-    //        break;
-    //    case eSFX.EObKeyUse:
-    //        tmp = ObKeyUse;
-    //        break;
-    //    case eSFX.EObAmKey:
-    //        tmp = ObAmKey;
-    //        break;
-    //    case eSFX.EObAmStardust:
-    //        tmp = ObAmStardust;
-    //        break;
-    //    case eSFX.EObMushroomBounce:
-    //        tmp = ObMushroomBounce;
-    //        break;
-    //    case eSFX.EObCollectStardust:
-    //        tmp = ObCollectStardust;
-    //        break;
-    //    case eSFX.EObCollectKey:
-    //        tmp = ObCollectKey;
-    //        break;
-    //    case eSFX.EObBouncePlantBounce:
-    //        tmp = ObBouncePlantBounce;
-    //        break;
-    //    case eSFX.EObGravitySwitch:
-    //        tmp = ObGravitySwitch;
-    //        break;
-    //    case eSFX.EObCatapultPlayerStart:
-    //        tmp = ObCatapultPlayerStart;
-    //        break;
-    //    case eSFX.EObPopBubble:
-    //        tmp = ObPopBubble;
-    //        break;
-    //    case eSFX.EObTeleportPlayer:
-    //        tmp = ObTeleportPlayer;
-    //        break;
-    //    case eSFX.EUIMenuOpenJingle:
-    //        tmp = UIMenuOpenJingle;
-    //        break;
-    //    case eSFX.EUIMenuCloseJingle:
-    //        tmp = UIMenuCloseJingle;
-    //        break;
-    //    case eSFX.EUIOpenSettingsJingle:
-    //        tmp = UIOpenSettingsJingle;
-    //        break;
-    //    case eSFX.EUICloseSettingsJingle:
-    //        tmp = UICloseSettingsJingle;
-    //        break;
-    //    case eSFX.EUIButtonPress:
-    //        tmp = UIButtonPress;
-    //        break;
-    //    case eSFX.EUIContinueGame:
-    //        tmp = UIContinueGame;
-    //        break;
-    //    default:
-    //        tmp = PlDeath;
-    //        break;
-    //}
 
     public void ChangeMasterVolume(float amount)
     {

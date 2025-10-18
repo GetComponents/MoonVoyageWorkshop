@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260533238186325884}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 260533240028604873}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &68338491849611355
 SpriteRenderer:
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 0.44, y: 0.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &260533239013261071
@@ -107,6 +107,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260533239013261071}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.54, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -115,7 +116,6 @@ Transform:
   - {fileID: 769751161841546897}
   - {fileID: 260533240028604873}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &260533240028604872
 GameObject:
@@ -140,6 +140,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260533240028604872}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -148,7 +149,6 @@ Transform:
   - {fileID: 260533240134237823}
   - {fileID: 260533238186325885}
   m_Father: {fileID: 260533239013261068}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &260533240134237822
 GameObject:
@@ -174,13 +174,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260533240134237822}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 260533240028604873}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5953855961926879456
 SpriteRenderer:
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_Size: {x: 0.44, y: 0.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &260533238099670815
@@ -239,6 +239,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 260533239013261068}
     m_Modifications:
     - target: {fileID: 662923065123832206, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
@@ -247,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 662923065123832206, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 662923065123832206, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -294,6 +295,15 @@ PrefabInstance:
       value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 260533238099670809}
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 260533238099670813}
   m_SourcePrefab: {fileID: 100100000, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
 --- !u!4 &769751161841546897 stripped
 Transform:
@@ -327,13 +337,22 @@ MonoBehaviour:
   MoveSpeed: 0
   RotationSpeed: 0
   bounceAnim: {fileID: 0}
+  otherAnim: {fileID: 0}
   interactionSXF: {fileID: 0}
   reactToGravity: 0
   isSticky: 0
   destroyOnInteract: 0
   floorOnInteract: 0
   ignoreCatapultCollision: 0
+  stopCatapultCollision: 1
+  InteractedWithPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  ExitInteractionWithPlayer:
+    m_PersistentCalls:
+      m_Calls: []
   interactionParticle: {fileID: 0}
+  interactionParticle2: {fileID: 0}
 --- !u!114 &260533238099670813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,3 +377,5 @@ MonoBehaviour:
   movement: 3
   StopTimer: 1
   dot: {fileID: 325140309815809048, guid: 1cbdf82259d9cad4fb529a900b42e91e, type: 3}
+  slowDownTime: 0
+  baseMoveSpeed: 0

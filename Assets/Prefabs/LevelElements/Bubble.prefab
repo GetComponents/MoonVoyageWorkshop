@@ -29,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5800999903531272775}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.57, y: -3.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5800999903531272794
 SpriteRenderer:
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.37753648, g: 0.990566, b: 0.9442997, a: 0.654902}
+  m_Sprite: {fileID: 21300000, guid: f5878c7079830a6448de80358314d0ec, type: 3}
+  m_Color: {r: 1, g: 0.990566, b: 0.9442997, a: 0.654902}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,6 +99,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -122,6 +141,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -148,6 +173,7 @@ MonoBehaviour:
   MoveSpeed: 0
   RotationSpeed: 0
   bounceAnim: {fileID: 0}
+  otherAnim: {fileID: 0}
   interactionSXF: {fileID: 0}
   reactToGravity: 0
   isSticky: 0
@@ -161,7 +187,8 @@ MonoBehaviour:
   ExitInteractionWithPlayer:
     m_PersistentCalls:
       m_Calls: []
-  interactionParticle: {fileID: 0}
+  interactionParticle: {fileID: 4456627908435780355, guid: 5034f871b55ef3a4fbd68841252da2ed, type: 3}
+  interactionParticle2: {fileID: 0}
 --- !u!114 &5800999903531272797
 MonoBehaviour:
   m_ObjectHideFlags: 0
