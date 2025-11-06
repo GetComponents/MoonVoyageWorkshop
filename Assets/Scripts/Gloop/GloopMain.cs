@@ -243,6 +243,7 @@ public class GloopMain : MonoBehaviour
         //    }
         //}
         MyMovement.MyBase.GroundedAmount = 0;
+        MyMovement.MyBase.Unstick();
         //foreach (GameObject gameObject in LosableObjects)
         //{
         //    if (gameObject.TryGetComponent<ObjectProperty>(out ObjectProperty tmp) && tmp.Type == ObjectType.COLLECTABLE)
@@ -254,7 +255,6 @@ public class GloopMain : MonoBehaviour
         //SoundManager.Instance.PlayEffect(respawnSound);
         //LosableObjects = new List<GameObject>();
         //LastCheckpoint.RespawnPlayer();
-        MyMovement.MyBase.Unstick();
         rb.velocity = Vector2.zero;
         StartCoroutine(TurnAnimOff());
     }

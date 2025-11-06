@@ -17,22 +17,10 @@ public class GloopCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log($"I, {gameObject.name} collided with {collision.gameObject.name}");
         if (collision.tag == "Floor")
         {
             if (GloopMain.Instance.MyMovement.MyBase.GroundedAmount == 0)
                 SoundManager.Instance.PlaySFX(eSFX.EObPlayerHitsGround, this.gameObject);
-            //switch (groundType)
-            //{
-            //    case EGrass:
-            //        //WwisePlay ObPlayerHitsGrass
-            //        break;
-            //    case ERock:
-            //        //WwisePlay ObPlayerHitsRock
-            //        break;
-            //    default:
-            //        break;
-            //}
             gloopMove.GroundEnter();
         }
     }
@@ -48,9 +36,5 @@ public class GloopCollision : MonoBehaviour
     public void ChangePosition()
     {
         transform.localPosition = new Vector3(transform.localPosition.x, -transform.localPosition.y, transform.localPosition.z);
-        //gravitySwitched = !gravitySwitched;
-        //if (gravitySwitched)
-        //{
-        //}
     }
 }

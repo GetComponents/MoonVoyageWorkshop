@@ -91,14 +91,6 @@ public class GloopMoveBase : MonoBehaviour
         }
         CurrentMovement = context.ReadValue<Vector2>();
         MovementDir.y = CurrentMovement.y;
-
-        //if (CurrentMovement.x != 0)
-        //{
-        //}
-        //else
-        //{
-        //}
-        //GroundMovement(context.ReadValue<Vector2>());
     }
 
     private void GroundMovement(Vector2 movement)
@@ -126,22 +118,11 @@ public class GloopMoveBase : MonoBehaviour
             }
             rb.AddForce(MovementDir * movementSpeed * airborneMul * Time.deltaTime, ForceMode2D.Force);
         }
-
-
-        //if (movement.x != 0)
-        //{
-        //    GloopAnim.SetBool("Walking", true);
-        //}
-        //else
-        //{
-        //    GloopAnim.SetBool("Walking", false);
-        //}
     }
 
     private void Start()
     {
         GameManager.Instance.GravitySwitch.AddListener(MoveHitbox);
-        //UnstickToSurfaceEvent.AddListener(Unstick);
     }
 
     public void MyUpdate()
@@ -157,16 +138,6 @@ public class GloopMoveBase : MonoBehaviour
         //if (GameManager.Instance.InputType == 0)
         //{
         GroundMovement(CurrentMovement);
-        //}
-        //else
-        //{
-
-        //}
-        //GroundMovement();
-        //}
-        //if (GroundedAmount != 0 && Mathf.Abs(rb.velocity.x) > 0.001f && Mathf.Abs(rb.velocity.x) > highEnd)
-        //{
-        //}
         if (GroundedAmount != 0 && ((MovementDir.x != 0 && Mathf.Abs(rb.velocity.x) > highEnd) || (MovementDir.x == 0 && Mathf.Abs(rb.velocity.x) > 0.0001f)))
         {
             Friction();
@@ -219,7 +190,6 @@ public class GloopMoveBase : MonoBehaviour
 
     public void Jump()
     {
-        //Debug.Log(GroundedAmount + " " + GracePeriod);
         SoundManager.Instance.PlaySFX(eSFX.EPlJump, this.gameObject);
         jumped = true;
         GracePeriod = 0;
@@ -234,17 +204,6 @@ public class GloopMoveBase : MonoBehaviour
         rb.AddForce(direction);
         ExternalAddforce.Invoke();
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (HoldingVelocity)
-    //    {
-    //        //rb.gravityScale = GloopMain.Instance.Rotation.Gravity;
-    //        VelocityToHold = Vector2.zero;
-    //        HoldingVelocity = false;
-    //        InputLocked = false;
-    //    }
-    //}
 
     public void GroundEnter()
     {
@@ -278,15 +237,12 @@ public class GloopMoveBase : MonoBehaviour
             {
                 GracePeriod = JumpGracePeriod;
             }
-            //GracePeriod = JumpGracePeriod;
         }
     }
 
     public void HoldVelocity()
     {
         rb.velocity = VelocityToHold;
-        //rb.AddForce(VelocityToHold);
-        //Debug.Log("rb velocity: " + rb.velocity);
     }
 
     public void StickToSurface(Transform surface)

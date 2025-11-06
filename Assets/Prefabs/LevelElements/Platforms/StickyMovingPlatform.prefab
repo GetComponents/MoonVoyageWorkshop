@@ -23,6 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8785317864304060595}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.98, y: 27.16, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 1}
@@ -31,7 +32,6 @@ Transform:
   - {fileID: 8131413017388724231}
   - {fileID: 8785317866014498466}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8785317864355289016
 GameObject:
@@ -57,13 +57,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8785317864355289016}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8785317866014498466}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8785317864355289018
 SpriteRenderer:
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_Size: {x: 0.44, y: 0.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8785317864518904588
@@ -141,13 +141,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8785317864518904588}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8785317866014498466}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8785317864518904590
 SpriteRenderer:
@@ -198,7 +198,7 @@ SpriteRenderer:
   m_Size: {x: 0.44, y: 0.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8785317866014498467
@@ -224,6 +224,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8785317866014498467}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33333334, y: 1, z: 1}
@@ -232,13 +233,13 @@ Transform:
   - {fileID: 8785317864518904591}
   - {fileID: 8785317864355289019}
   m_Father: {fileID: 8785317864304060594}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8785317865523753353
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8785317864304060594}
     m_Modifications:
     - target: {fileID: 625590975400371654, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
@@ -305,7 +306,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: StickyPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 8808761670468300193, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2dda4627a4d6f8b45bce1347a62adc52, type: 3}
+    - target: {fileID: 8808761670468300193, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8785317866194716178}
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8785317866194716190}
   m_SourcePrefab: {fileID: 100100000, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
 --- !u!1 &6831985043675417124 stripped
 GameObject:
@@ -334,6 +352,7 @@ MonoBehaviour:
   MoveSpeed: 0
   RotationSpeed: 0
   bounceAnim: {fileID: 0}
+  otherAnim: {fileID: 0}
   interactionSXF: {fileID: 0}
   reactToGravity: 0
   isSticky: 0
@@ -348,6 +367,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactionParticle: {fileID: 0}
+  interactionParticle2: {fileID: 0}
 --- !u!114 &8785317866194716190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +392,8 @@ MonoBehaviour:
   movement: 2
   StopTimer: 0
   dot: {fileID: 0}
+  slowDownTime: 0
+  baseMoveSpeed: 0
 --- !u!4 &8131413017388724231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 662923065123832206, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}

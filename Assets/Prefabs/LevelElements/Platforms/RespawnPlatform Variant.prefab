@@ -23,19 +23,20 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2488369944796708578}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 842650068337104437}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &180879310258673595
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 625590975400371654, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
@@ -98,7 +99,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnPlatform Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8808761670468300193, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2dda4627a4d6f8b45bce1347a62adc52, type: 3}
+    - target: {fileID: 8808761670468300193, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 662923065123832206, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2096533531089858443}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6955353305678154675}
+    - targetCorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8219427310650702242}
   m_SourcePrefab: {fileID: 100100000, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
 --- !u!4 &842650068337104437 stripped
 Transform:
@@ -110,20 +131,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2827044774335331245, guid: b6bc5bc1b58bc30438be00849f0548cb, type: 3}
   m_PrefabInstance: {fileID: 180879310258673595}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8219427310650702242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2718259892057943062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c26c04a3f4acc8241b89ff23d54c6d38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnTransform: {fileID: 2096533531089858443}
-  op: {fileID: 6955353305678154675}
 --- !u!114 &6955353305678154675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,12 +153,14 @@ MonoBehaviour:
   MoveSpeed: 0
   RotationSpeed: 0
   bounceAnim: {fileID: 0}
+  otherAnim: {fileID: 0}
   interactionSXF: {fileID: 0}
   reactToGravity: 0
   isSticky: 0
   destroyOnInteract: 0
   floorOnInteract: 0
   ignoreCatapultCollision: 0
+  stopCatapultCollision: 1
   InteractedWithPlayer:
     m_PersistentCalls:
       m_Calls: []
@@ -159,3 +168,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactionParticle: {fileID: 0}
+  interactionParticle2: {fileID: 0}
+--- !u!114 &8219427310650702242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718259892057943062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26c04a3f4acc8241b89ff23d54c6d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTransform: {fileID: 2096533531089858443}
+  op: {fileID: 6955353305678154675}
