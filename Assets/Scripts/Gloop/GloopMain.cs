@@ -60,6 +60,8 @@ public class GloopMain : MonoBehaviour
     float iFrameTimer;
     [SerializeField]
     float scenicHealth;
+    [SerializeField]
+    InputActionAsset myInput;
 
     float currentHealth;
     //public CinemachineVirtualCamera Cinemachine;
@@ -122,6 +124,7 @@ public class GloopMain : MonoBehaviour
         {
             currentHealth = scenicHealth;
         }
+        var tmp = myInput.actionMaps;
     }
 
     private void Start()

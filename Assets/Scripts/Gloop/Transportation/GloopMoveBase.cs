@@ -77,6 +77,7 @@ public class GloopMoveBase : MonoBehaviour
 
     public void NewMove(InputAction.CallbackContext context)
     {
+        //Jump();
         //if (context.phase)
         if (Mathf.Approximately(CurrentMovement.x, 0) && !Mathf.Approximately(context.ReadValue<Vector2>().x, 0))
         {
@@ -262,7 +263,7 @@ public class GloopMoveBase : MonoBehaviour
 
     public void Unstick()
     {
-        SoundManager.Instance.PlaySFX(eSFX.EPlUnstickFromStickySurface, this.gameObject);
+        //SoundManager.Instance.PlaySFX(eSFX.EPlUnstickFromStickySurface, this.gameObject);
         stickingToSurface = false;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
