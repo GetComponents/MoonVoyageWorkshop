@@ -22,6 +22,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     SoundEffect[] allSoundEffects;
 
+    Dictionary<GameObject, LerpTimer> playingLerps = new Dictionary<GameObject, LerpTimer>();
+
 
 
     public bool PlaySoundtrack
@@ -116,9 +118,10 @@ public class SoundManager : MonoBehaviour
         return false;
     }
 
-    public void PlaySFX(eSFX sfx, GameObject origin, bool startPlay = true, bool randomPitch = false)
+    public void PlaySFX(eSFX sfx, GameObject origin, bool startPlay = true, bool randomPitch = false, bool fade = false)
     {
         AudioSource tmp = null;
+        SoundEffect originSFX = new SoundEffect();
         if (origin != null)
         {
             for (int i = 0; i < allSoundEffects.Length; i++)
@@ -137,6 +140,7 @@ public class SoundManager : MonoBehaviour
                         {
                             foundPair = true;
                             tmp = allSoundEffects[i].AttachedAudioSources[j];
+                            originSFX = allSoundEffects[i];
                             break;
                         }
                     }
@@ -154,6 +158,7 @@ public class SoundManager : MonoBehaviour
                 {
                     CopyComp.CopyAudioSource(allSoundEffects[i].source[UnityEngine.Random.Range(0, allSoundEffects[i].source.Length)], tmp);
                 }
+                originSFX = allSoundEffects[i];
                 break;
             }
             if (tmp == null)
@@ -185,13 +190,34 @@ public class SoundManager : MonoBehaviour
         if (randomPitch)
             tmp.pitch = UnityEngine.Random.Range(-maxPitchChange, maxPitchChange) + 1;
 
+        if (playingLerps.Count > 0 && playingLerps.ContainsKey(origin))
+        {
+            GameTimer.Instance.triggeringLerpTimer.Add(playingLerps[origin]);
+            playingLerps.Remove(origin);
+        }
         if (startPlay)
         {
             tmp.Play();
+            if (originSFX.fadeTimer != 0 && originSFX.callText == eSFX.EPlFloatLoop)
+            {
+                float orVol = originSFX.source[0].volume;
+                playingLerps.Add(origin, GameTimer.Instance.AddNewLerpTimer((float lerpVal) => { tmp.volume = Mathf.Lerp(0, orVol, lerpVal); Debug.Log($"lerpVal = {lerpVal}, Volume = {tmp.volume}"); }, null, originSFX.fadeTimer));
+            }
+
             //Debug.Log("Playing sfx: " + sfx + "on " + origin);
         }
         else
-            tmp.Stop();
+        {
+            if (originSFX.fadeTimer != 0)
+            {
+                float orVol = originSFX.source[0].volume;
+                GameTimer.Instance.AddNewLerpTimer((float lerpVal) => tmp.volume = Mathf.Lerp(originSFX.AttachedAudioSources[0].volume, 0, lerpVal), () => tmp.Stop(), originSFX.fadeTimer);
+            }
+            else
+            {
+                tmp.Stop();
+            }
+        }
     }
 
     public void ChangeMasterVolume(float amount)
@@ -238,6 +264,7 @@ struct SoundEffect
     public List<AudioSource> AttachedAudioSources;
     [HideInInspector]
     public float[] StandardVolume;
+    public float fadeTimer;
 
 }
 
@@ -321,5 +348,7 @@ public enum eSFX
     EUIOpenSettingsJingle,
     EUICloseSettingsJingle,
     EUIButtonPress,
-    EUIContinueGame
+    EUIContinueGame,
+    EObCatapultEnter,
+
 }

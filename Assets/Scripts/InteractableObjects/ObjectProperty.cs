@@ -132,6 +132,7 @@ public class ObjectProperty : MonoBehaviour
                 gloop.transform.position = transform.position;
                 gloop.StickToSurface(transform);
                 gloop.UnstickToSurfaceEvent.AddListener(CatapultPlayer);
+                SoundManager.Instance.PlaySFX(eSFX.EObCatapultEnter, this.gameObject);
                 if (Moves || Rotates)
                 {
                     GloopMain.Instance.Rotation.UnrotateCursor = true;
