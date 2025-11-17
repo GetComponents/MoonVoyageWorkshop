@@ -312,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 15337001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 29.92, z: 0}
+  m_LocalPosition: {x: 0.69, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1324,7 +1324,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 87cd7d0340ee5ba4fae5ad6648a78be5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.501
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2810,7 +2810,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: f5b694f265cb2d14b8652aa274427f96, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.701
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2819,7 +2819,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 13
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -3212,7 +3212,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 0dc35152abedef6469131e9f2c0bed23, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.241
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5268,7 +5268,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: e34d2c6842353e04c9d41bf68570b095, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.137
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5707,7 +5707,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1d4e55d44978e6f478676434029ced39, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6146,7 +6146,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 078fb2fc2c0ac5446bafc1e470a6c027, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.756
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7270,11 +7270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1103205281268970926, guid: 16cfea95274c047458db3b690e2a3549, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 1103205281268970926, guid: 16cfea95274c047458db3b690e2a3549, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.92
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1103205281268970926, guid: 16cfea95274c047458db3b690e2a3549, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7494,7 +7494,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 162ddd2fbe3566945aa0bad93a0f7efd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.859
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8615,7 +8615,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 03cf1895bbd49174b87ab1a2293922ea, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.169
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8728,7 +8728,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5818772b0a90c3a44ae745181fed55ea, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.772
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8882,7 +8882,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: e914fedcf5a4c19489bb9978c79ceca6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.663
+  m_Volume: 0.804
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8891,7 +8891,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 10
+  MaxDistance: 13
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -9282,7 +9282,6 @@ GameObject:
   - component: {fileID: 1555799219}
   - component: {fileID: 1555799218}
   - component: {fileID: 1555799217}
-  - component: {fileID: 1555799216}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9290,116 +9289,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1555799216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555799215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 198cd8ff4a61f1e46b0813ce3d8b2555, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: eef564f3-49bc-4bb9-9b60-0dd083f17253
-    m_ActionName: Player/Move[/SwitchProControllerHID/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 454965e4-7a37-40ed-8e22-d7b3192accbb
-    m_ActionName: Player/Look[/SwitchProControllerHID/rightStick]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ce8f7ec3-82a7-44cc-97a3-60f16c824f6b
-    m_ActionName: Player/Fire[/SwitchProControllerHID/rightTrigger,/Mouse/leftButton,/SwitchProControllerHID/buttonNorth,/SwitchProControllerHID/buttonWest]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b2b890b5-cbd9-4b54-a164-d6b1cf0a6c2b
-    m_ActionName: Player/Jump[/Keyboard/space,/SwitchProControllerHID/buttonSouth,/SwitchProControllerHID/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 08c116af-e7a1-49ed-97e8-1c4f967ca6f8
-    m_ActionName: Player/Look2[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 205702204}
-        m_TargetAssemblyTypeName: MainGameUI, UI
-        m_MethodName: PressEscaoe
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 8ef4aae4-c209-4a36-acaf-47c304ef0201
-    m_ActionName: Player/Escape[/SwitchProControllerHID/start,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cd1f9573-e43c-46c6-adac-89ab300ec476
-    m_ActionName: UI/Navigate[/SwitchProControllerHID/leftStick/up,/SwitchProControllerHID/rightStick/up,/SwitchProControllerHID/leftStick/down,/SwitchProControllerHID/rightStick/down,/SwitchProControllerHID/leftStick/left,/SwitchProControllerHID/rightStick/left,/SwitchProControllerHID/leftStick/right,/SwitchProControllerHID/rightStick/right,/SwitchProControllerHID/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0dc77902-b21d-4f00-9f85-5a7c3d1d5896
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 309525d0-6b9b-42c8-98b9-fb7af3612b21
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 43f478e3-c91c-4e1b-b71a-29f7d49699d2
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 09ee08d4-bd0e-4e59-832a-f688378bb1b9
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 538ffa3f-94e3-4836-9dbb-57642918f1bf
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 699d5cfa-8e7b-4638-a0a1-45c23e690332
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1b1ccccb-3fe4-43a0-bea0-86f68f91de5a
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cb604ad3-97b5-470c-983f-00471b1e1bd3
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9401c09e-a95c-4e51-b74b-29b181d41e77
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cffcfbca-0636-4b11-a2d7-b7494c36a455
-    m_ActionName: Player/OpenPowerSelection[/Keyboard/leftShift,/SwitchProControllerHID/leftShoulder]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1555799217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9759,7 +9648,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: f7646eefe4036e6479d61fa95332540c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.698
+  m_Volume: 0.073
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -11145,7 +11034,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 23a3bfbd9cf52184eb11b9a3863d1855, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.186
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12223,7 +12112,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7d0073e9d6108f24a9e9d06462008f9a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.799
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -12717,7 +12606,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4180514401360927576, guid: 12ac5ecaa26af884bbf4e2d7032bf6d8, type: 2}
   m_audioClip: {fileID: 8300000, guid: c72a544d9e8bc044facff0fb36d83a0d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.843
   m_Pitch: 1
   Loop: 0
   Mute: 0

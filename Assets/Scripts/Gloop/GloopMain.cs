@@ -124,7 +124,7 @@ public class GloopMain : MonoBehaviour
         {
             currentHealth = scenicHealth;
         }
-        var tmp = myInput.actionMaps;
+        //var tmp = myInput.actionMaps;
     }
 
     private void Start()
